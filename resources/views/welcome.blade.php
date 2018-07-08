@@ -71,10 +71,14 @@
 <!-- Top Bar -->
     @include('partial.topbar')
 <!-- #Top Bar -->
-
+<section>
+    <!-- Left Sidebar -->
+    @include('partial.sidebar')
+    <!-- #END# Left Sidebar -->
+</section>
 
 <section class="content">
-    @yield('content')
+    <h1>Welcome page</h1>
 </section>
 
 <!-- Jquery Core Js -->
