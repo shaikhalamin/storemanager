@@ -37,14 +37,14 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="">
-                <a href="">
+            <li class="{{ Request::is('register') ? 'active' : '' }}">
+                <a href="{{ route('register') }}">
                     <i class="material-icons">label</i>
                     <span>Register</span>
                 </a>
             </li>
-            <li class="">
-                <a href="">
+            <li class="{{ Request::is('login') ? 'active' : '' }}">
+                <a href="{{ route('login') }}">
                     <i class="material-icons">label</i>
                     <span>Login</span>
                 </a>
@@ -56,7 +56,7 @@
     <!-- Footer -->
     <div class="legal">
         <div class="copyright">
-            &copy; {{ date('Y') }} <a href="javascript:void(0);">Grocery Shop</a>.
+            &copy; {{ date('Y') }} <a href="javascript:void(0);">{{ config('app.name') }}</a>.
         </div>
         <div class="version">
             <b>Version: </b> 1.0.5

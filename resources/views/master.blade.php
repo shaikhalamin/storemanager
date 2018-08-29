@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title') - {{ config('app.name', 'Store Manager') }}</title>
+    <title>@yield('title') - {{ config('app.name') }}</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -69,11 +69,11 @@
 </div>
 <!-- #END# Search Bar -->
 <!-- Top Bar -->
-    @include('layouts.backend.partial.topbar')
+    @include('partial.topbar')
 <!-- #Top Bar -->
 <section>
     <!-- Left Sidebar -->
-    @include('layouts.backend.partial.sidebar')
+    @include('partial.sidebar')
     <!-- #END# Left Sidebar -->
 </section>
 
