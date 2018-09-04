@@ -5,9 +5,9 @@
     <div class="row clearfix">
         <div class="col-md-8 col-md-offset-2">
             <div class="card">
-                <div class="header">
-                    <h2>
-                        Login
+                <div class="header bg-teal">
+                    <h2 class="align-center">
+                        {{ config('app.name') }} Login
                     </h2>
                 </div>
                 <div class="body">
@@ -37,7 +37,7 @@
                         </div>
 
                         <br>
-                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">LOGIN</button>
+                        <button type="submit" class="btn bg-teal m-t-15 waves-effect">LOGIN</button>
                     </form>
                 </div>
             </div>

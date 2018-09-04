@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     @stack('css')
 </head>
-<body class="theme-blue">
+<body class="theme-teal">
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
