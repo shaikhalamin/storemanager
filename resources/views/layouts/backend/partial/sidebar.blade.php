@@ -27,6 +27,7 @@
             </div>
         </div>
     </div>
+
     <!-- #User Info -->
     <!-- Menu -->
     <div class="menu">
@@ -84,6 +85,15 @@
                     </form>
                 </li>
             @endif
+
+            @if(Request::is('client*'))
+                <li class="{{ Request::is('client/dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('client.dashboard') }}">
+                        <i class="material-icons">dashboard</i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+            @endif
             
 
         </ul>
@@ -100,3 +110,4 @@
     </div>
     <!-- #Footer -->
 </aside>
+

@@ -22,6 +22,9 @@
     <!-- Waves Effect Css -->
     <link href="{{ asset('assets/backend/plugins/node-waves/waves.css') }}" rel="stylesheet" />
 
+    <!-- Bootstrap Select Css -->
+    <link href="{{ asset('assets/backend/plugins/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet" />
+
     <!-- Animation Css -->
     <link href="{{ asset('assets/backend/plugins/animate-css/animate.css') }}" rel="stylesheet" />
 
@@ -36,7 +39,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     @stack('css')
 </head>
-<body class="theme-teal">
+<body class="theme-cyan">
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
@@ -88,7 +91,7 @@
 <script src="{{ asset('assets/backend/plugins/bootstrap/js/bootstrap.js') }}"></script>
 
 <!-- Select Plugin Js -->
-{{--<script src="{{ asset('assets/backend/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>--}}
+<script src="{{ asset('assets/backend/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
 
 <!-- Slimscroll Plugin Js -->
 <script src="{{ asset('assets/backend/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
@@ -96,8 +99,8 @@
 <!-- Waves Effect Plugin Js -->
 <script src="{{ asset('assets/backend/plugins/node-waves/waves.js') }}"></script>
 
-
-
+<script src="{{ asset('assets/backend/js/pages/ui/animations.js') }}"></script>
+<script src="{{ asset('assets/backend/js/pages/ui/tooltips-popovers.js') }}"></script>
 <!-- Custom Js -->
 <script src="{{ asset('assets/backend/js/admin.js') }}"></script>
 

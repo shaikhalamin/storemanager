@@ -27,7 +27,17 @@
                             @endif
                         </div>
 
-
+                        <label for="username_address">Username</label>
+                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                            <div class="form-line">
+                                <input type="text" id="username" class="form-control" name="username" value="{{ old('username') }}" placeholder="Enter your username">
+                            </div>
+                            @if ($errors->has('username'))
+                                <small class="alert alert-danger">
+                                    {{ $errors->first('username') }}
+                                </small>
+                            @endif
+                        </div>
 
                         <label for="email_address">Email Address</label>
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -60,7 +70,7 @@
                         </div>
 
                         <br>
-                        <button type="submit" class="btn btn-info m-t-15 waves-effect">REGISTER</button>
+                        <button type="submit" class="btn bg-teal m-t-15 waves-effect">REGISTER</button>
                     </form>
                 </div>
             </div>
