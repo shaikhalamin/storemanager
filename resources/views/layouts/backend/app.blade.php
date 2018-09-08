@@ -28,6 +28,8 @@
     <!-- Morris Chart Css-->
     <link href="{{ asset('assets/backend/plugins/morrisjs/morris.css') }}" rel="stylesheet" />
 
+    <link href="{{ asset('assets/backend/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet" />
+
     <!-- Custom Css -->
     <link href="{{ asset('assets/backend/css/style.css') }}" rel="stylesheet">
 
@@ -94,7 +96,17 @@
 <!-- Waves Effect Plugin Js -->
 <script src="{{ asset('assets/backend/plugins/node-waves/waves.js') }}"></script>
 
+
+<!-- Datatable start here -->
 <script src="{{ asset('assets/backend/plugins/jquery-countto/jquery.countTo.js') }}"></script>
+
+<script src="{{ asset('assets/backend/plugins/jquery-datatable/jquery.dataTables.js') }}"></script>
+
+<script src="{{ asset('assets/backend/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
+
+<script src="{{ asset('assets/backend/js/pages/tables/jquery-datatable.js') }}"></script>
+
+<!-- Datatable end  here -->
 
 <!-- Custom Js -->
 <script src="{{ asset('assets/backend/js/admin.js') }}"></script>
@@ -103,6 +115,8 @@
 <!-- Demo Js -->
 <script src="{{ asset('assets/backend/js/demo.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
 
 <script>
    

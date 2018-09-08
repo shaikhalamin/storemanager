@@ -38,40 +38,169 @@
                 <li class="{{ Request::is('admin/dashboard') ? 'active' : '' }}">
                     <a href="{{ route('admin.dashboard') }}">
                         <i class="material-icons">dashboard</i>
-                        <span>Dashboard</span>
+                        <span>DASHBOARD</span>
                     </a>
                 </li>
-                <li class="">
-                    <a href="">
-                        <i class="material-icons">label</i>
-                        <span>Tag</span>
+
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">trending_up</i>
+                        <span>SALES</span>
                     </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>New Invoice</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>Invoice List</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>Daily Sales</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>Monthly Sales</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="">
-                    <a href="">
-                        <i class="material-icons">apps</i>
-                        <span>Category</span>
+
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">storage</i>
+                        <span>PRODUCT CATEGORY</span>
                     </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>New Category</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>Category List</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="">
-                    <a href="">
-                        <i class="material-icons">library_books</i>
-                        <span>Posts</span>
+
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">storage</i>
+                        <span>PRODUCTS</span>
                     </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>New Product</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>Products List</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="">
-                    <a href="">
-                        <i class="material-icons">library_books</i>
-                        <span>Pending Posts</span>
+
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">widgets</i>
+                        <span>CRM</span>
                     </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>Add Client</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>Client List</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>Add Supplier</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>Supplier List</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="">
-                    <a href="">
-                        <i class="material-icons">subscriptions</i>
-                        <span>Subscribers</span>
+
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">person</i>
+                        <span>USER MANAGEMENT</span>
                     </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>Add new user</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>User List</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>Manage Permission</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="header">System</li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">attach_money</i>
+                        <span>CASH MANAGEMENT</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>Expense</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>Income</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>Due</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">home</i>
+                        <span>COMPANY INFORMATION</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>Mange Comanpy</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="header">SYSTEM</li>
                 <li>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
