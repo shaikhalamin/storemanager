@@ -72,19 +72,19 @@
                     </ul>
                 </li>
 
-                <li>
+                <li class="{{ Request::is('admin/category/*') ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">storage</i>
                         <span>PRODUCT CATEGORY</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="{{ route('admin.createcategory') }}">
                                 <span>New Category</span>
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="{{ route('admin.categorylist') }}">
                                 <span>Category List</span>
                             </a>
                         </li>

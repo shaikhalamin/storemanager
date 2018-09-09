@@ -24,4 +24,8 @@ class HomeController extends Controller
     public function welcome(){
         return view('welcome');
     }
+
+    public function test($test){
+        dd($test);
+    }
 }
