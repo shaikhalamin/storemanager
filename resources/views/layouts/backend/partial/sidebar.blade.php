@@ -91,14 +91,14 @@
                     </ul>
                 </li>
 
-                <li>
+                <li class="{{ Request::is('admin/product/*') ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">storage</i>
                         <span>PRODUCTS</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="{{ route('admin.createproduct') }}">
                                 <span>New Product</span>
                             </a>
                         </li>

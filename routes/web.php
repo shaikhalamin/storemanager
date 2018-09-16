@@ -24,14 +24,20 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
 
     Route::get('dashboard','DashboardController@index')->name('dashboard');
 
+    /* Category Routes */
     Route::get('category/create','CategoryController@index')->name('createcategory');
     Route::post('category/create','CategoryController@create')->name('createcategory');
     Route::get('category/list','CategoryController@categoryList')->name('categorylist');
     Route::get('category/list/datatables','CategoryController@categoryDatatables')->name('ajaxcategory');
     Route::get('category/edit/{id}','CategoryController@categoryedit')->name('categoryedit');
     Route::post('category/update','CategoryController@updatecategory')->name('updatecategory');
-    
     Route::get('category/delete/{id}','CategoryController@categorydelete')->name('categorydelete');
+
+    /*Product Routes*/
+    Route::get('product/create','ProductController@index')->name('createproduct');
+    Route::post('product/create','ProductController@create')->name('createproduct');
+
+
     
 });
 

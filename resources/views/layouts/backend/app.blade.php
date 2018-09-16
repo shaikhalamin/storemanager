@@ -25,6 +25,9 @@
     <!-- Animation Css -->
     <link href="{{ asset('assets/backend/plugins/animate-css/animate.css') }}" rel="stylesheet" />
 
+    <!-- Bootstrap select -->
+    <link href="{{ asset('assets/backend/plugins/bootstrap-select/css/bootstrap-select.css') }}" rel="stylesheet" />
+
     <!-- Morris Chart Css-->
     <link href="{{ asset('assets/backend/plugins/morrisjs/morris.css') }}" rel="stylesheet" />
 
@@ -36,7 +39,7 @@
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('assets/backend/css/themes/all-themes.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    @stack('css')
+    @yield('css')
 </head>
 <body class="theme-cyan">
 <!-- Page Loader -->
@@ -88,7 +91,7 @@
 <script src="{{ asset('assets/backend/plugins/bootstrap/js/bootstrap.js') }}"></script>
 
 <!-- Select Plugin Js -->
-{{-- <script src="{{ asset('assets/backend/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script> --}}
+<script src="{{ asset('assets/backend/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
 
 <!-- Slimscroll Plugin Js -->
 <script src="{{ asset('assets/backend/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
@@ -108,11 +111,9 @@
 
 @yield('javascript')
 
-
-
 <script>
    
 </script>
-@stack('js')
+
 </body>
 </html>

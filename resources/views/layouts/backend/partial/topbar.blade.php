@@ -3,7 +3,9 @@
         <div class="navbar-header">
             <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
             <a href="javascript:void(0);" class="bars"></a>
-            <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name') }}</a>
+            <a class="navbar-brand font-20" href="{{ url('/') }}">
+                <b>{{ config('app.name') }}</b>
+            </a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -30,7 +32,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="dropdown-toggle" href="{{ route('logout') }}"
+                    <a class="dropdown-toggle" data-placement="bottom" data-toggle="tooltip" title="Logout" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                         <i class="material-icons">input</i>

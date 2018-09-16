@@ -109,7 +109,7 @@
 			// settings
 			element: 'body',
 			position: null,
-			type: "teal",
+			type: "blue-grey",
 			allow_dismiss: true,
 			newest_on_top: false,
 			showProgressbar: false,
