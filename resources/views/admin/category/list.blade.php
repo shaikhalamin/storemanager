@@ -19,22 +19,22 @@
                             <table class="table table-bordered table-striped table-hover category_list dataTable" id="category_list">
                                 <thead>
                                     <tr>
-                                        <th>name</th>
-                                        <th>slug</th>
-                                        <th>created_at</th>
-                                        <th>action</th>
+                                        <th class="align-center">name</th>
+                                        <th class="align-center">slug</th>
+                                        <th class="align-center">created_at</th>
+                                        <th class="align-center">action</th>
                                         
                                     </tr>
                                 </thead>
                                 <tfoot>
-                                    <tr>
-                                        <th>name</th>
-                                        <th>slug</th>
-                                        <th>created_at</th>
-                                        <th>action</th>
+                                    <tr class="align-center">
+                                        <th class="align-center">name</th>
+                                        <th class="align-center">slug</th>
+                                        <th class="align-center">created_at</th>
+                                        <th class="align-center">action</th>
                                     </tr>
                                 </tfoot>
-                                <tbody>
+                                <tbody class="align-center">
                                    
                                 </tbody>
                             </table>

@@ -18,24 +18,24 @@
                             <table class="table table-bordered table-striped table-hover category_list dataTable" id="product_list">
                                 <thead>
                                     <tr>
-                                        <th>productname</th>
-										<th>productcode</th>
-										<th>productunit</th>
-										<th>purchaseprice</th>
-										<th>salesprice</th>
-										<th>totalstock</th>
-										<th>action</th>
+                                        <th class="align-center">productname</th>
+										<th class="align-center">productcode</th>
+										<th class="align-center">productunit</th>
+										<th class="align-center">purchaseprice</th>
+										<th class="align-center">salesprice</th>
+										<th class="align-center">totalstock</th>
+										<th class="align-center">action</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>productname</th>
-										<th>productcode</th>
-										<th>productunit</th>
-										<th>purchaseprice</th>
-										<th>salesprice</th>
-										<th>totalstock</th>
-										<th>action</th>
+                                        <th class="align-center">productname</th>
+										<th class="align-center">productcode</th>
+										<th class="align-center">productunit</th>
+										<th class="align-center">purchaseprice</th>
+										<th class="align-center">salesprice</th>
+										<th class="align-center">totalstock</th>
+										<th class="align-center">action</th>
                                     </tr>
                                 </tfoot>
                                 <tbody class="align-center">
