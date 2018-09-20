@@ -9,32 +9,36 @@
                 <div class="card">
                     <div class="header">
                         <h2 class="">
-                        	Category List
+                        	Product List
                         </h2>
                         
                     </div>
-
                     <div class="body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover category_list dataTable" id="category_list">
+                            <table class="table table-bordered table-striped table-hover category_list dataTable" id="product_list">
                                 <thead>
                                     <tr>
-                                        <th>name</th>
-                                        <th>slug</th>
-                                        <th>created_at</th>
-                                        <th>action</th>
-                                        
+                                        <th>productname</th>
+										<th>productcode</th>
+										<th>productunit</th>
+										<th>purchaseprice</th>
+										<th>salesprice</th>
+										<th>totalstock</th>
+										<th>action</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>name</th>
-                                        <th>slug</th>
-                                        <th>created_at</th>
-                                        <th>action</th>
+                                        <th>productname</th>
+										<th>productcode</th>
+										<th>productunit</th>
+										<th>purchaseprice</th>
+										<th>salesprice</th>
+										<th>totalstock</th>
+										<th>action</th>
                                     </tr>
                                 </tfoot>
-                                <tbody>
+                                <tbody class="align-center">
                                    
                                 </tbody>
                             </table>
@@ -59,25 +63,44 @@
 
 <script type="text/javascript">
 	$(document).ready( function () {
-        $('#category_list').DataTable({
+        $('#product_list').DataTable({
         	"pageLength": 10,
             "processing": true,
             "serverSide": true,
-            "ajax": "{{ route('admin.ajaxcategory') }}",
+            "ajax": "{{ route('admin.ajaxproduct') }}",
             "columns": [
-	            { data: 'name',render: function ( data, type, row ) {
+
+	            { data: 'productname',render: function ( data, type, row ) {
+
+		            return data ? data.substr( 0, 50 ) : '...';
+
+		        	}
+		        },
+	            { data: 'productcode',render: function ( data, type, row ) {
 
 		            return data ? data.substr( 0, 25 ) : '...';
 
 		        	}
 		        },
-	            { data: 'slug',render: function ( data, type, row ) {
+	            { data: 'productunit',render: function ( data, type, row ) {
 
 		            return data ? data.substr( 0, 25 ) : '...';
 
 		        	}
 		        },
-	            { data: 'created_at',render: function ( data, type, row ) {
+		        { data: 'purchaseprice',render: function ( data, type, row ) {
+
+		            return data ? data.substr( 0, 50 ) : '...';
+
+		        	}
+		        },
+	            { data: 'salesprice',render: function ( data, type, row ) {
+
+		            return data ? data.substr( 0, 25 ) : '...';
+
+		        	}
+		        },
+		        { data: 'totalstock',render: function ( data, type, row ) {
 
 		            return data ? data.substr( 0, 25 ) : '...';
 
@@ -90,10 +113,10 @@
         });
     });
 
-	var hasNotification = "{{Session::has('category')}}";
+	var hasNotification = "{{Session::has('product')}}";
 	if(hasNotification){
 
-		var getNotification = "{{Session::get('category')}}";
+		var getNotification = "{{Session::get('product')}}";
 
 		$.notify({
 			// options

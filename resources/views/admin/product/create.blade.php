@@ -3,13 +3,6 @@
 @section('content')
 <section class="content">
     <div class="container-fluid">
-        <div class="block-header">
-            <ol class="breadcrumb breadcrumb-col-cyan">
-	            <li><a href="javascript:void(0);">Admin</a></li>
-	            <li><a href="javascript:void(0);">Product</a></li>
-	            <li class="active">Create</li>
-	        </ol>
-        </div>
         <div class="row clearfix">
             <div class="col-md-12 col-sm-12">
                 <div class="card">
@@ -37,7 +30,7 @@
                                             </select>
                                         </div>
                                         @if ($errors->has('category'))
-                                            <small class="alert alert-danger">
+                                            <small class="alert alert-warning">
                                                 {{ $errors->first('category') }}
                                             </small>
                                         @endif
@@ -50,7 +43,7 @@
                                             <input type="text" id="productname" class="form-control" name="productname" value="{{ old('productname') }}">
                                         </div>
                                         @if ($errors->has('productname'))
-                                            <small class="alert alert-danger">
+                                            <small class="alert alert-warning">
                                                 {{ $errors->first('productname') }}
                                             </small>
                                         @endif
@@ -66,7 +59,7 @@
                                             <input type="text" id="username" class="form-control" name="productcode" value="{{ old('productcode') }}">
                                         </div>
                                         @if ($errors->has('productcode'))
-                                            <small class="alert alert-danger">
+                                            <small class="alert alert-warning">
                                                 {{ $errors->first('productcode') }}
                                             </small>
                                         @endif
@@ -79,7 +72,7 @@
                                             <input type="file" id="productimage" class="form-control" name="productimage">
                                         </div>
                                         @if ($errors->has('productimage'))
-                                        <small class="alert alert-danger">
+                                        <small class="alert alert-warning">
                                             {{ $errors->first('productimage') }}
                                         </small>
                                         @endif
@@ -95,7 +88,7 @@
                                             <textarea name="description" rows="4" class="form-control no-resize" >{{ old('description') }}</textarea>
                                         </div>
                                         @if ($errors->has('description'))
-                                            <small class="alert alert-danger">
+                                            <small class="alert alert-warning">
                                                 {{ $errors->first('description') }}
                                             </small>
                                         @endif
@@ -115,7 +108,7 @@
                                             <a href="javascript:;" class="spin-down" data-spin="down"><i class="glyphicon glyphicon-chevron-down"></i></a>
                                         </span>
                                         @if ($errors->has('purchaseprice'))
-                                        <small class="alert alert-danger">
+                                        <small class="alert alert-warning">
                                             {{ $errors->first('purchaseprice') }}
                                         </small>
                                         @endif
@@ -133,7 +126,7 @@
                                             <a href="javascript:;" class="spin-down" data-spin="down"><i class="glyphicon glyphicon-chevron-down"></i></a>
                                         </span>
                                         @if ($errors->has('bodyrate'))
-                                        <small class="alert alert-danger">
+                                        <small class="alert alert-warning">
                                             {{ $errors->first('bodyrate') }}
                                         </small>
                                         @endif
@@ -151,7 +144,7 @@
                                             <a href="javascript:;" class="spin-down" data-spin="down"><i class="glyphicon glyphicon-chevron-down"></i></a>
                                         </span>
                                         @if ($errors->has('salesprice'))
-                                        <small class="alert alert-danger">
+                                        <small class="alert alert-warning">
                                             {{ $errors->first('salesprice') }}
                                         </small>
                                         @endif
@@ -172,7 +165,7 @@
                                             <a href="javascript:;" class="spin-down" data-spin="down"><i class="glyphicon glyphicon-chevron-down"></i></a>
                                         </span>
                                         @if ($errors->has('discount'))
-                                        <small class="alert alert-danger">
+                                        <small class="alert alert-warning">
                                             {{ $errors->first('discount') }}
                                         </small>
                                         @endif
@@ -185,7 +178,7 @@
                                             <input type="text" id="totalstock" class="form-control"  name="totalstock">
                                         </div>
                                         @if ($errors->has('totalstock'))
-                                        <small class="alert alert-danger">
+                                        <small class="alert alert-warning">
                                             {{ $errors->first('totalstock') }}
                                         </small>
                                         @endif
@@ -202,7 +195,7 @@
                                             </select>
                                         </div>
                                         @if ($errors->has('productunit'))
-                                        <small class="alert alert-danger">
+                                        <small class="alert alert-warning">
                                             {{ $errors->first('productunit') }}
                                         </small>
                                         @endif
@@ -221,7 +214,7 @@
                                             </select>
                                         </div>
                                         @if ($errors->has('availability'))
-                                        <small class="alert alert-danger">
+                                        <small class="alert alert-warning">
                                             {{ $errors->first('availability') }}
                                         </small>
                                         @endif
@@ -238,7 +231,7 @@
                                             </select>
                                         </div>
                                         @if ($errors->has('supplier'))
-                                        <small class="alert alert-danger">
+                                        <small class="alert alert-warning">
                                             {{ $errors->first('supplier') }}
                                         </small>
                                         @endif

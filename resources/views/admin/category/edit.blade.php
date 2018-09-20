@@ -3,13 +3,6 @@
 @section('content')
 <section class="content">
     <div class="container-fluid">
-        <div class="block-header">
-            <ol class="breadcrumb breadcrumb-col-cyan">
-	            <li><a href="javascript:void(0);">Admin</a></li>
-	            <li><a href="javascript:void(0);">Category</a></li>
-	            <li class="active">Edit</li>
-	        </ol>
-        </div>
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
