@@ -17,7 +17,7 @@
                     </div>
                     <div class="content">
                         <div class="text">Total Category</div>
-                        <div class="number count-to">269</div>
+                        <div class="number count-to">{{ $categoryCount ? $categoryCount : 0}}</div>
                         
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="content">
                         <div class="text">All Products</div>
-                        <div class="number count-to">1796</div>
+                        <div class="number count-to">{{ $productCount ? $productCount : 0 }}</div>
                     </div>
                 </div>
             </div>
@@ -62,202 +62,37 @@
                 <div class="card">
                     <div class="header">
                         <h2 class="">
-                            ALL PRODUCTS
+                            Product List
                         </h2>
+                        
                     </div>
                     <div class="body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                            <table class="table table-bordered table-striped table-hover category_list dataTable" id="product_list">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th class="align-center">productname</th>
+                                        <th class="align-center">productcode</th>
+                                        <th class="align-center">productunit</th>
+                                        <th class="align-center">purchaseprice</th>
+                                        <th class="align-center">salesprice</th>
+                                        <th class="align-center">totalstock</th>
+                                        <th class="align-center">action</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th class="align-center">productname</th>
+                                        <th class="align-center">productcode</th>
+                                        <th class="align-center">productunit</th>
+                                        <th class="align-center">purchaseprice</th>
+                                        <th class="align-center">salesprice</th>
+                                        <th class="align-center">totalstock</th>
+                                        <th class="align-center">action</th>
                                     </tr>
                                 </tfoot>
-                                <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>$320,800</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011/07/25</td>
-                                        <td>$170,750</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ashton Cox</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>66</td>
-                                        <td>2009/01/12</td>
-                                        <td>$86,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rhona Davidson</td>
-                                        <td>Integration Specialist</td>
-                                        <td>Tokyo</td>
-                                        <td>55</td>
-                                        <td>2010/10/14</td>
-                                        <td>$327,900</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Colleen Hurst</td>
-                                        <td>Javascript Developer</td>
-                                        <td>San Francisco</td>
-                                        <td>39</td>
-                                        <td>2009/09/15</td>
-                                        <td>$205,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Sonya Frost</td>
-                                        <td>Software Engineer</td>
-                                        <td>Edinburgh</td>
-                                        <td>23</td>
-                                        <td>2008/12/13</td>
-                                        <td>$103,600</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jena Gaines</td>
-                                        <td>Office Manager</td>
-                                        <td>London</td>
-                                        <td>30</td>
-                                        <td>2008/12/19</td>
-                                        <td>$90,560</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Quinn Flynn</td>
-                                        <td>Support Lead</td>
-                                        <td>Edinburgh</td>
-                                        <td>22</td>
-                                        <td>2013/03/03</td>
-                                        <td>$342,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Charde Marshall</td>
-                                        <td>Regional Director</td>
-                                        <td>San Francisco</td>
-                                        <td>36</td>
-                                        <td>2008/10/16</td>
-                                        <td>$470,600</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Haley Kennedy</td>
-                                        <td>Senior Marketing Designer</td>
-                                        <td>London</td>
-                                        <td>43</td>
-                                        <td>2012/12/18</td>
-                                        <td>$313,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tatyana Fitzpatrick</td>
-                                        <td>Regional Director</td>
-                                        <td>London</td>
-                                        <td>19</td>
-                                        <td>2010/03/17</td>
-                                        <td>$385,750</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Michael Silva</td>
-                                        <td>Marketing Designer</td>
-                                        <td>London</td>
-                                        <td>66</td>
-                                        <td>2012/11/27</td>
-                                        <td>$198,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Paul Byrd</td>
-                                        <td>Chief Financial Officer (CFO)</td>
-                                        <td>New York</td>
-                                        <td>64</td>
-                                        <td>2010/06/09</td>
-                                        <td>$725,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gloria Little</td>
-                                        <td>Systems Administrator</td>
-                                        <td>New York</td>
-                                        <td>59</td>
-                                        <td>2009/04/10</td>
-                                        <td>$237,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bradley Greer</td>
-                                        <td>Software Engineer</td>
-                                        <td>London</td>
-                                        <td>41</td>
-                                        <td>2012/10/13</td>
-                                        <td>$132,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gavin Joyce</td>
-                                        <td>Developer</td>
-                                        <td>Edinburgh</td>
-                                        <td>42</td>
-                                        <td>2010/12/22</td>
-                                        <td>$92,575</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jennifer Chang</td>
-                                        <td>Regional Director</td>
-                                        <td>Singapore</td>
-                                        <td>28</td>
-                                        <td>2010/11/14</td>
-                                        <td>$357,650</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Martena Mccray</td>
-                                        <td>Post-Sales support</td>
-                                        <td>Edinburgh</td>
-                                        <td>46</td>
-                                        <td>2011/03/09</td>
-                                        <td>$324,050</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Unity Butler</td>
-                                        <td>Marketing Designer</td>
-                                        <td>San Francisco</td>
-                                        <td>47</td>
-                                        <td>2009/12/09</td>
-                                        <td>$85,675</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Howard Hatfield</td>
-                                        <td>Office Manager</td>
-                                        <td>San Francisco</td>
-                                        <td>51</td>
-                                        <td>2008/12/16</td>
-                                        <td>$164,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hope Fuentes</td>
-                                        <td>Secretary</td>
-                                        <td>San Francisco</td>
-                                        <td>41</td>
-                                        <td>2010/02/12</td>
-                                        <td>$109,850</td>
-                                    </tr>
-                                    
+                                <tbody class="align-center">
+                                   
                                 </tbody>
                             </table>
                         </div>
@@ -268,6 +103,118 @@
 
     </div>
 </section>
-    		
-                
+@endsection
+
+@section('javascript')
+
+<script src="{{ asset('assets/backend/plugins/jquery-countto/jquery.countTo.js') }}"></script>
+
+<script src="{{ asset('assets/backend/plugins/jquery-datatable/jquery.dataTables.js') }}"></script>
+
+<script src="{{ asset('assets/backend/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
+
+<script type="text/javascript">
+    $(document).ready( function () {
+        $('#product_list').DataTable({
+            "pageLength": 10,
+            "processing": true,
+            "serverSide": true,
+            "ajax": "{{ route('admin.ajaxproduct') }}",
+            "columns": [
+
+                { data: 'productname',render: function ( data, type, row ) {
+
+                    return data ? data.substr( 0, 50 ) : '...';
+
+                    }
+                },
+                { data: 'productcode',render: function ( data, type, row ) {
+
+                    return data ? data.substr( 0, 25 ) : '...';
+
+                    }
+                },
+                { data: 'productunit',render: function ( data, type, row ) {
+
+                    return data ? data.substr( 0, 25 ) : '...';
+
+                    }
+                },
+                { data: 'purchaseprice',render: function ( data, type, row ) {
+
+                    return data ? data.substr( 0, 50 ) : '...';
+
+                    }
+                },
+                { data: 'salesprice',render: function ( data, type, row ) {
+
+                    return data ? data.substr( 0, 25 ) : '...';
+
+                    }
+                },
+                { data: 'totalstock',render: function ( data, type, row ) {
+
+                    return data ? data.substr( 0, 25 ) : '...';
+
+                    }
+                },
+                { data: 'action'},
+
+            ]
+
+        });
+    });
+
+    var hasNotification = "{{Session::has('product')}}";
+    if(hasNotification){
+
+        var getNotification = "{{Session::get('product')}}";
+
+        $.notify({
+            // options
+            message: getNotification
+        },{
+            // settings
+            element: 'body',
+            position: null,
+            type: "blue-grey",
+            allow_dismiss: true,
+            newest_on_top: false,
+            showProgressbar: false,
+            placement: {
+                from: "top",
+                align: "right"
+            },
+            offset: 20,
+            spacing: 10,
+            z_index: 1031,
+            delay: 3000,
+            timer: 1000,
+            url_target: '_blank',
+            mouse_over: null,
+            animate: {
+                enter: 'animated bounceInRight',
+                exit: 'animated bounceOutRight'
+            },
+            onShow: null,
+            onShown: null,
+            onClose: null,
+            onClosed: null,
+            icon_type: 'class',
+            template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert bg-{0}" role="alert">' +
+                '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+                '<span data-notify="icon"></span> ' +
+                '<span data-notify="title">{1}</span> ' +
+                '<span data-notify="message">{2}</span>' +
+                '<div class="progress" data-notify="progressbar">' +
+                    '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+                '</div>' +
+                '<a href="{3}" target="{4}" data-notify="url"></a>' +
+            '</div>' 
+        });
+    }
+
+
+</script>
+
 @endsection
