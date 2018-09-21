@@ -12,7 +12,7 @@
                         </h2>
                     </div>
                     <div class="body">
-                        <form method="POST" action="{{ route('admin.createproduct') }}">
+                        <form method="POST" action="{{ route('admin.createproduct') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
                             <div class="row clearfix">
@@ -210,7 +210,7 @@
                                             <select name="availability" class="form-control show-tick">
                                                 <option value="">-- Please select availability --</option>
                                                 <option value="1">In Stock</option>
-                                                <option value="1">Outof Stock</option>
+                                                <option value="0">Outof Stock</option>
                                             </select>
                                         </div>
                                         @if ($errors->has('availability'))

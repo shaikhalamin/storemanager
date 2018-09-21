@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Yajra\Datatables\Datatables;
 use App\Category;
 use App\Product;
+use App\Helpers\Common;
+use Image;
+use File;
 use Auth;
 
 class ProductController extends Controller
@@ -49,6 +52,8 @@ class ProductController extends Controller
             /*'supplier'=>'required'*/
           ]);
 
+
+
         $product = new Product();
         $product->category_id = $request->get('category');
         $product->productname = $request->get('productname'); 
@@ -60,11 +65,19 @@ class ProductController extends Controller
         $product->salesprice = $request->get('salesprice'); 
         $product->discount = $request->get('discount'); 
         $product->totalstock = $request->get('totalstock'); 
-        $product->availability = 1;//$request->get('availability'); 
-        $product->image = '';//$request->get(''); 
+        $product->availability = $request->get('availability'); 
+
+        $image = $request->file('productimage');
+        $productcode = $request->input('productcode');
+        $imageName = strtolower($productcode).".".$image->getClientOriginalExtension();
+        $product->image = $imageName;
         $product->user_id = Auth::id();
         $product->supplier_id = Auth::id();//$request->get('supplier');
         $product->save();
+
+        $upload = new Common();
+        $imageUpload = $upload->uploadImage($request);
+
 
         return redirect(route('admin.productlist'))->with('product','New product created!');
 
