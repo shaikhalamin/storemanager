@@ -23,7 +23,7 @@ class CreateSuppliersTable extends Migration
             $table->string('email')->unique();
             $table->string('city');
             $table->string('zipcode');
-            $table->string('address');
+            $table->text('address');
             $table->string('country');
             $table->string('image')->default('default.jpg');
             $table->timestamps();

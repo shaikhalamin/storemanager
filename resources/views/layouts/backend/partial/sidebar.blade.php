@@ -144,13 +144,13 @@
                                 <span>Client List</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="javascript:void(0);">
+                        <li class="{{ Request::is('admin/supplier/create') ? 'active' : '' }}">
+                            <a href="{{ route('admin.createsupplier') }}">
                                 <span>Add Supplier</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="javascript:void(0);">
+                        <li class="{{ Request::is('admin/supplier/list') ? 'active' : '' }}">
+                            <a href="{{ route('admin.supplierlist') }}">
                                 <span>Supplier List</span>
                             </a>
                         </li>

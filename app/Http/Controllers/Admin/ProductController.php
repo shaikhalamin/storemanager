@@ -82,17 +82,22 @@ class ProductController extends Controller
         $product->discount = $request->get('discount'); 
         $product->totalstock = $request->get('totalstock'); 
         $product->availability = $request->get('availability'); 
-
-        $image = $request->file('productimage');
-        $productcode = $request->input('productcode');
-        $imageName = strtolower($productcode).".".$image->getClientOriginalExtension();
-        $product->image = $imageName;
+        if($request->has('productimage')){
+            $image = $request->file('productimage');
+            $productcode = $request->input('productcode');
+            $imageName = strtolower($productcode).".".$image->getClientOriginalExtension();
+            $product->image = $imageName;
+            $upload = new Common();
+            $imageUpload = $upload->uploadImage($productcode,$image,'/images/product/');
+        }else{
+            $product->image = "default.jpg";
+        }
+        
         $product->user_id = Auth::id();
         $product->supplier_id = Auth::id();//$request->get('supplier');
         $product->save();
 
-        $upload = new Common();
-        $imageUpload = $upload->uploadImage($request);
+        
 
         return redirect(route('admin.productlist'))->with('product','New product created!');
     }
@@ -218,7 +223,7 @@ class ProductController extends Controller
             $product->image = $imageName;
 
             $upload = new Common();
-            $imageUpload = $upload->updateImage($image,$product);
+            $imageUpload = $upload->updateImage($productcode,$image,'/images/product/');
 
         }else{
             $product->image = $product->image;
@@ -241,7 +246,7 @@ class ProductController extends Controller
         return redirect(route('admin.productlist'))->with('product','Product not found!');
         }
         $deleteImage = new Common();
-        $deleteImage->deleteImage($product->image);
+        $deleteImage->deleteImage($product->image,'/images/product/');
         $product->delete();
 
         return redirect(route('admin.productlist'))->with('product','Product deleted !');

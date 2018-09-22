@@ -8,32 +8,26 @@ use File;
 
 class Common extends Model
 {
-    public function uploadImage($request){
+    public function uploadImage($name,$imagefile,$path){
 
-    	//dd($request->all());
+        $image = $imagefile;
 
-    	$productcode = $request->input('productcode');
-        $image = $request->file('productimage');
-
-        //dd($image);
-
-        $imageName = strtolower($productcode).".".$image->getClientOriginalExtension();
+        $imageName = strtolower($name).".".$image->getClientOriginalExtension();
 
         $saveImage = null;
 
-        $existsFile = public_path('/images/product/' . $imageName );
+        $existsFile = public_path($path . $imageName );
 
         if(file_exists($existsFile)){
             $deleteFile = File::delete($existsFile);
             if($deleteFile){
-                $saveImage = Image::make($image)->save( public_path('/images/product/' . $imageName ) );
+                $saveImage = Image::make($image)->save( public_path($path . $imageName ) );
             }else{
                 dd('Unable to delete file');
             }
         }else{
-            $saveImage = Image::make($image)->save( public_path('/images/product/' . $imageName ) );
+            $saveImage = Image::make($image)->save( public_path($path . $imageName ) );
         }
-
 
         if($saveImage){
             return true;
@@ -42,22 +36,22 @@ class Common extends Model
         }
     }
 
-    public function updateImage($image,$product){
-        $productcode = $product->productcode;
-        $imageName = strtolower($productcode).".".$image->getClientOriginalExtension();
-        $existsFile = public_path('/images/product/' . $imageName );
+    public function updateImage($name,$imagefile,$path){
+        
+        $imageName = strtolower($name).".".$imagefile->getClientOriginalExtension();
+        $existsFile = public_path($path . $imageName );
 
         if(file_exists($existsFile)){
             File::delete($existsFile);
         }
-        $saveImage = Image::make($image)->save( public_path('/images/product/' . $imageName ) );
+        $saveImage = Image::make($imagefile)->save( public_path($path . $imageName ) );
 
         return $saveImage;
     }
 
-    public function deleteImage($imageName){
+    public function deleteImage($imageName,$path){
 
-        $existsFile = public_path('/images/product/' . $imageName );
+        $existsFile = public_path($path . $imageName );
 
         $deleteFile = false;
 
