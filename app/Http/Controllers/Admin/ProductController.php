@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yajra\Datatables\Datatables;
+use App\Helpers\Common;
+use App\Productunit;
 use App\Category;
 use App\Product;
-use App\Helpers\Common;
 use Image;
 use File;
 use Auth;
@@ -17,6 +18,7 @@ class ProductController extends Controller
     public function index(){
 
     	$categoryList = [];
+        $unitList = [];
 
     	$categories = Category::all();
 
@@ -30,8 +32,24 @@ class ProductController extends Controller
     		}
     	}
 
+        $units = Productunit::all();
 
-    	return view('admin.product.create',['categoryList'=>$categoryList]);
+        if(!is_null($units)){
+
+            foreach ($units as $key => $unit) {
+
+                if(isset($unit)){
+                    $unitList[$unit->name] = $unit->name;
+                }
+            }
+
+        }
+
+
+    	return view('admin.product.create',[
+                                            'categoryList'=>$categoryList,
+                                            'unitList'=>$unitList
+                                            ]);
     }
 
     public function create(Request $request){
@@ -52,13 +70,11 @@ class ProductController extends Controller
             /*'supplier'=>'required'*/
           ]);
 
-
-
         $product = new Product();
         $product->category_id = $request->get('category');
         $product->productname = $request->get('productname'); 
         $product->productcode = $request->get('productcode'); 
-        $product->productunit = 'kg';//$request->get('productunit'); 
+        $product->productunit = $request->get('productunit'); 
         $product->description = $request->get('description'); 
         $product->purchaseprice = $request->get('purchaseprice'); 
         $product->bodyrate = $request->get('bodyrate'); 
@@ -78,12 +94,7 @@ class ProductController extends Controller
         $upload = new Common();
         $imageUpload = $upload->uploadImage($request);
 
-
         return redirect(route('admin.productlist'))->with('product','New product created!');
-
-        //$productAll = Product::all();
-
-        //dd($productAll);
     }
 
     public function productList(){
@@ -122,13 +133,117 @@ class ProductController extends Controller
               ->make(true);
     }
     public function editproduct($id){
-        dd($id);
+        //dd($id);
+
+        $product = Product::find($id);
+
+        if(is_null($product)){
+
+            return redirect(route('admin.productlist'))->with('product','Product not found!');
+        }
+
+        $categoryList = [];
+        $unitList = [];
+
+        $categories = Category::all();
+
+        if(!is_null($categories)){
+
+            foreach ($categories as $key => $category) {
+
+                if(isset($category)){
+                    $categoryList[$category->id] = $category->name;
+                }
+            }
+        }
+
+        $units = Productunit::all();
+
+        if(!is_null($units)){
+
+            foreach ($units as $key => $unit) {
+
+                if(isset($unit)){
+                    $unitList[$unit->name] = $unit->name;
+                }
+            }
+
+        }
+
+        return view('admin.product.edit',[
+                                            'product'=>$product,
+                                            'categoryList'=>$categoryList,
+                                            'unitList'=>$unitList
+                                        ]);
+
     }
     public function updateproduct(Request $request){
-        dd($request->all());
+        //dd($request->all());
+        $this->validate($request,[
+            'category'=>'required',
+            'productname'=>'required',
+            /*'productimage'=>'required',*/
+            'description'=>'required',
+            'purchaseprice'=>'required',
+            'bodyrate'=>'required',
+            'salesprice'=>'required',
+            'discount'=>'required',
+            'totalstock'=>'required',
+            'productunit'=>'required',
+            'availability'=>'required',
+            /*'supplier'=>'required'*/
+          ]);
+
+        $product = Product::find($request->get('id'));
+
+        if(is_null($product)){
+            return redirect(route('admin.productlist'))->with('product','Product not found!');
+        }
+
+        $product->category_id = $request->get('category');
+        $product->productname = $request->get('productname'); 
+        $product->productunit = $request->get('productunit'); 
+        $product->description = $request->get('description'); 
+        $product->purchaseprice = $request->get('purchaseprice'); 
+        $product->bodyrate = $request->get('bodyrate'); 
+        $product->salesprice = $request->get('salesprice'); 
+        $product->discount = $request->get('discount'); 
+        $product->totalstock = $request->get('totalstock'); 
+        $product->availability = $request->get('availability'); 
+
+        if($request->has('productimage')){
+            $image = $request->file('productimage');
+            $productcode = $product->productcode;
+            $imageName = strtolower($productcode).".".$image->getClientOriginalExtension();
+            $product->image = $imageName;
+
+            $upload = new Common();
+            $imageUpload = $upload->updateImage($image,$product);
+
+        }else{
+            $product->image = $product->image;
+        }
+        
+        $product->user_id = Auth::id();
+        $product->supplier_id = Auth::id();//$request->get('supplier');
+        $product->update();
+
+        
+
+        return redirect(route('admin.productlist'))->with('product','New product updated!');
 
     }
     public function deleteproduct($id){
-        dd($id);
+
+        $product = Product::find($id);
+
+        if(is_null($product)){
+        return redirect(route('admin.productlist'))->with('product','Product not found!');
+        }
+        $deleteImage = new Common();
+        $deleteImage->deleteImage($product->image);
+        $product->delete();
+
+        return redirect(route('admin.productlist'))->with('product','Product deleted !');
     }
 }

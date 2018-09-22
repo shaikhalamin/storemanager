@@ -99,12 +99,30 @@
                     <ul class="ml-menu">
                         <li>
                             <a href="{{ route('admin.createproduct') }}">
-                                <span>New Product</span>
+                                <span>Create Product</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('admin.productlist') }}">
                                 <span>Products List</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="{{ Request::is('admin/productunit/*') ? 'active' : '' }}">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">storage</i>
+                        <span>PRODUCTS UNIT</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="{{ route('admin.createunit') }}">
+                                <span>Create Productunit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.unitlist') }}">
+                                <span>Productunit List</span>
                             </a>
                         </li>
                     </ul>

@@ -43,6 +43,15 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
     Route::post('product/update','ProductController@updateproduct')->name('updateproduct');
     Route::get('product/delete/{id}','ProductController@deleteproduct')->name('deleteproduct');
 
+    /* Product Unit Routes */
+    Route::get('productunit/create','ProductUnitController@index')->name('createunit');
+    Route::post('productunit/create','ProductUnitController@create')->name('createunit');
+    Route::get('productunit/list','ProductUnitController@unitList')->name('unitlist');
+    Route::get('productunit/list/datatables','ProductUnitController@unitDatatables')->name('ajaxunit');
+    Route::get('productunit/edit/{id}','ProductUnitController@unitedit')->name('unitedit');
+    Route::post('productunit/update','ProductUnitController@updateunit')->name('updateunit');
+    Route::get('productunit/delete/{id}','ProductUnitController@unitdelete')->name('unitdelete');
+
 
     
 });

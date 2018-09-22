@@ -41,4 +41,32 @@ class Common extends Model
             return false;
         }
     }
+
+    public function updateImage($image,$product){
+        $productcode = $product->productcode;
+        $imageName = strtolower($productcode).".".$image->getClientOriginalExtension();
+        $existsFile = public_path('/images/product/' . $imageName );
+
+        if(file_exists($existsFile)){
+            File::delete($existsFile);
+        }
+        $saveImage = Image::make($image)->save( public_path('/images/product/' . $imageName ) );
+
+        return $saveImage;
+    }
+
+    public function deleteImage($imageName){
+
+        $existsFile = public_path('/images/product/' . $imageName );
+
+        $deleteFile = false;
+
+        if(file_exists($existsFile)){
+            $deleteFile = File::delete($existsFile);
+            if($deleteFile){
+                return true;
+            }
+        }
+        return $deleteFile;
+    }
 }
