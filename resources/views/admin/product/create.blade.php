@@ -229,8 +229,11 @@
                                         <div class="form-line">
                                             <select name="supplier" class="form-control show-tick" data-live-search="true">
                                                 <option value="">-- Please select supplier --</option>
-                                                <option value="1">Abdur Rahman</option>
-                                                <option value="2">Barkat Ullah</option>
+                                                @if($supplierList)
+                                                    @foreach($supplierList as $key => $supplier)
+                                                        <option value="{{ $key }}"> {{ $supplier }}</option>
+                                                    @endforeach
+                                                @endif
                                             </select>
                                         </div>
                                         @if ($errors->has('supplier'))

@@ -37,7 +37,7 @@
             @if(Request::is('admin*'))
                 <li class="{{ Request::is('admin/dashboard') ? 'active' : '' }}">
                     <a href="{{ route('admin.dashboard') }}">
-                        <i class="material-icons">dashboard</i>
+                        <i class="material-icons">home</i>
                         <span>DASHBOARD</span>
                     </a>
                 </li>

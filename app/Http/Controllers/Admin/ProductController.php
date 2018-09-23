@@ -9,6 +9,7 @@ use App\Helpers\Common;
 use App\Productunit;
 use App\Category;
 use App\Product;
+use App\Supplier;
 use Image;
 use File;
 use Auth;
@@ -17,38 +18,24 @@ class ProductController extends Controller
 {
     public function index(){
 
-    	$categoryList = [];
-        $unitList = [];
+        $modelList = new Common();
 
     	$categories = Category::all();
-
-    	if(!is_null($categories)){
-
-    		foreach ($categories as $key => $category) {
-
-    			if(isset($category)){
-    				$categoryList[$category->id] = $category->name;
-    			}
-    		}
-    	}
+        $categoryList = $modelList->getList($categories,'id','name');
 
         $units = Productunit::all();
+        $unitList = $modelList->getList($units,'name','name');
 
-        if(!is_null($units)){
+        $suppliers = Supplier::all();
 
-            foreach ($units as $key => $unit) {
+        $supplierList = $modelList->getList($suppliers,'id','propitername');
 
-                if(isset($unit)){
-                    $unitList[$unit->name] = $unit->name;
-                }
-            }
-
-        }
-
+        //dd($suppliers);
 
     	return view('admin.product.create',[
                                             'categoryList'=>$categoryList,
-                                            'unitList'=>$unitList
+                                            'unitList'=>$unitList,
+                                            'supplierList'=>$supplierList
                                             ]);
     }
 
@@ -96,8 +83,6 @@ class ProductController extends Controller
         $product->user_id = Auth::id();
         $product->supplier_id = Auth::id();//$request->get('supplier');
         $product->save();
-
-        
 
         return redirect(route('admin.productlist'))->with('product','New product created!');
     }
@@ -147,38 +132,22 @@ class ProductController extends Controller
             return redirect(route('admin.productlist'))->with('product','Product not found!');
         }
 
-        $categoryList = [];
-        $unitList = [];
+        $modelList = new Common();
 
         $categories = Category::all();
-
-        if(!is_null($categories)){
-
-            foreach ($categories as $key => $category) {
-
-                if(isset($category)){
-                    $categoryList[$category->id] = $category->name;
-                }
-            }
-        }
+        $categoryList = $modelList->getList($categories,'id','name');
 
         $units = Productunit::all();
+        $unitList = $modelList->getList($units,'name','name');
 
-        if(!is_null($units)){
-
-            foreach ($units as $key => $unit) {
-
-                if(isset($unit)){
-                    $unitList[$unit->name] = $unit->name;
-                }
-            }
-
-        }
+        $suppliers = Supplier::all();
+        $supplierList = $modelList->getList($suppliers,'id','propitername');
 
         return view('admin.product.edit',[
                                             'product'=>$product,
                                             'categoryList'=>$categoryList,
-                                            'unitList'=>$unitList
+                                            'unitList'=>$unitList,
+                                            'supplierList'=>$supplierList
                                         ]);
 
     }

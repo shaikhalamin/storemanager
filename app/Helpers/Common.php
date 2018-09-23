@@ -8,6 +8,25 @@ use File;
 
 class Common extends Model
 {
+
+    public function getList($modelIstance,$listkey,$listValue){
+
+        $list = [];
+
+        if(!is_null($modelIstance)){
+
+            foreach ($modelIstance as $key => $value) {
+                if(isset($value)){
+                    $list[$value->$listkey] = $value->$listValue;
+                }
+            }
+        }
+
+        return $list;
+    }
+
+
+
     public function uploadImage($name,$imagefile,$path){
 
         $image = $imagefile;
