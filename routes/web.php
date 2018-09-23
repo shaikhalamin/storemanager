@@ -56,7 +56,9 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
     Route::post('supplier/create','SupplierController@store')->name('createsupplier');
     Route::get('supplier/list','SupplierController@supplierList')->name('supplierlist');
     Route::get('supplier/list/datatables','SupplierController@supplierDatatables')->name('ajaxsupplier');
+    Route::get('supplier/view/{id}','SupplierController@viewsupplier')->name('viewsupplier');
     Route::get('supplier/edit/{id}','SupplierController@editsupplier')->name('editsupplier');
+    Route::post('supplier/update','SupplierController@updatesupplier')->name('updatesupplier');
     Route::get('supplier/delete/{id}','SupplierController@deletesupplier')->name('deletesupplier');
 
 

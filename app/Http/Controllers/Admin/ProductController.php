@@ -81,7 +81,7 @@ class ProductController extends Controller
         }
         
         $product->user_id = Auth::id();
-        $product->supplier_id = Auth::id();//$request->get('supplier');
+        $product->supplier_id = $request->get('supplier');
         $product->save();
 
         return redirect(route('admin.productlist'))->with('product','New product created!');
@@ -199,10 +199,8 @@ class ProductController extends Controller
         }
         
         $product->user_id = Auth::id();
-        $product->supplier_id = Auth::id();//$request->get('supplier');
+        $product->supplier_id = $request->get('supplier');
         $product->update();
-
-        
 
         return redirect(route('admin.productlist'))->with('product','New product updated!');
 

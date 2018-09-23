@@ -128,7 +128,7 @@
                     </ul>
                 </li>
 
-                <li>
+                <li class="{{ Request::is('admin/supplier/*') || Request::is('admin/client/*') ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">widgets</i>
                         <span>CRM</span>
@@ -144,12 +144,12 @@
                                 <span>Client List</span>
                             </a>
                         </li>
-                        <li class="{{ Request::is('admin/supplier/create') ? 'active' : '' }}">
+                        <li class="">
                             <a href="{{ route('admin.createsupplier') }}">
                                 <span>Add Supplier</span>
                             </a>
                         </li>
-                        <li class="{{ Request::is('admin/supplier/list') ? 'active' : '' }}">
+                        <li class="">
                             <a href="{{ route('admin.supplierlist') }}">
                                 <span>Supplier List</span>
                             </a>
