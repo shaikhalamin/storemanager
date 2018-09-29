@@ -120,20 +120,20 @@
                     </ul>
                 </li>
                 
-                <li class="{{ Request::is('admin/supplier/*') || Request::is('admin/client/*') ? 'active' : '' }}">
+                <li class="{{ Request::is('admin/supplier/*') || Request::is('admin/customer/*') ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">widgets</i>
                         <span>CRM</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="javascript:void(0);">
-                                <span>Add Client</span>
+                            <a href="{{ route('admin.createcustomer') }}">
+                                <span>Add Customer</span>
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);">
-                                <span>Client List</span>
+                            <a href="{{ route('admin.customerlist') }}">
+                                <span>Customer List</span>
                             </a>
                         </li>
                         <li class="">

@@ -15,6 +15,15 @@ class DashboardController extends Controller
 
 		$productCount = Product::count();
 
-		return view('admin.dashboard',['categoryCount'=>$categoryCount,'productCount'=>$productCount]);
+		$salesCount = 0;
+
+		$monthlySales = 0;
+
+
+		return view('admin.dashboard',['categoryCount'=>$categoryCount,
+										'productCount'=>$productCount,
+										'salesCount'=>$salesCount,
+										'monthlySales'=>$monthlySales
+									]);
 	}
 }

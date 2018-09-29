@@ -18,11 +18,11 @@ class CreateSuppliersTable extends Migration
             $table->string('companyname');
             $table->string('propitername');
             $table->string('suppliercode');
-            $table->string('mobile');
-            $table->string('telephone');
-            $table->string('email')->unique();
+            $table->string('mobile')->unique();
+            $table->string('telephone')->nullable();
+            $table->string('email')->unique()->nullable();
             $table->string('city');
-            $table->string('zipcode');
+            $table->string('zipcode')->nullable();
             $table->text('address');
             $table->string('country');
             $table->string('image')->default('default.jpg');

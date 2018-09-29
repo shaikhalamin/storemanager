@@ -40,7 +40,7 @@
                     </div>
                     <div class="content">
                         <div class="text">All Sales</div>
-                        <div class="number count-to">12525</div>
+                        <div class="number count-to">{{ $salesCount ? $salesCount : 0 }}</div>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="content">
                         <div class="text">Monthly Sales</div>
-                        <div class="number count-to">185</div>
+                        <div class="number count-to">{{ $monthlySales ? $monthlySales : 0 }}</div>
                     </div>
                 </div>
             </div>

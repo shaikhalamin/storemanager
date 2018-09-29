@@ -62,6 +62,17 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
     Route::post('supplier/update','SupplierController@updatesupplier')->name('updatesupplier');
     Route::get('supplier/delete/{id}','SupplierController@deletesupplier')->name('deletesupplier');
 
+    /* Customer Routes */
+    Route::get('customer/create','CustomerController@create')->name('createcustomer');
+    Route::post('customer/create','CustomerController@store')->name('createcustomer');
+    Route::get('customer/list','CustomerController@customerList')->name('customerlist');
+    Route::get('customer/list/datatables','CustomerController@customerDatatables')->name('ajaxcustomer');
+
+    Route::get('customer/view/{id}','CustomerController@viewcustomer')->name('viewcustomer');
+    Route::get('customer/edit/{id}','CustomerController@editcustomer')->name('editcustomer');
+    Route::post('customer/update','CustomerController@updatecustomer')->name('updatecustomer');
+    Route::get('customer/delete/{id}','CustomerController@deletecustomer')->name('deletecustomer');
+
 
     
 });
