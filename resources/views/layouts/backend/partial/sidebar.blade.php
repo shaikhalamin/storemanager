@@ -91,12 +91,22 @@
                     </ul>
                 </li>
 
-                <li class="{{ Request::is('admin/product/*') ? 'active' : '' }}">
+                <li class="{{ Request::is('admin/product/*') || Request::is('admin/productunit/*') ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">storage</i>
                         <span>PRODUCTS</span>
                     </a>
                     <ul class="ml-menu">
+                        <li>
+                            <a href="{{ route('admin.createunit') }}">
+                                <span>Create unit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.unitlist') }}">
+                                <span>Unit List</span>
+                            </a>
+                        </li>
                         <li>
                             <a href="{{ route('admin.createproduct') }}">
                                 <span>Create Product</span>
@@ -109,25 +119,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="{{ Request::is('admin/productunit/*') ? 'active' : '' }}">
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">storage</i>
-                        <span>PRODUCTS UNIT</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="{{ route('admin.createunit') }}">
-                                <span>Create Productunit</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.unitlist') }}">
-                                <span>Productunit List</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
+                
                 <li class="{{ Request::is('admin/supplier/*') || Request::is('admin/client/*') ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">widgets</i>

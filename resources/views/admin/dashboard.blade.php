@@ -72,23 +72,25 @@
                                 <thead>
                                     <tr>
                                         <th class="align-center">productname</th>
+                                        <th class="align-center">categoryname</th>
                                         <th class="align-center">productcode</th>
-                                        <th class="align-center">productunit</th>
                                         <th class="align-center">purchaseprice</th>
                                         <th class="align-center">salesprice</th>
                                         <th class="align-center">totalstock</th>
-                                        <th class="align-center">action</th>
+                                        <th class="align-center">purchasedfrom</th>
+                                        <th class="align-center">productunit</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                         <th class="align-center">productname</th>
+                                        <th class="align-center">categoryname</th>
                                         <th class="align-center">productcode</th>
-                                        <th class="align-center">productunit</th>
                                         <th class="align-center">purchaseprice</th>
                                         <th class="align-center">salesprice</th>
                                         <th class="align-center">totalstock</th>
-                                        <th class="align-center">action</th>
+                                        <th class="align-center">purchasedfrom</th>
+                                        <th class="align-center">productunit</th>
                                     </tr>
                                 </tfoot>
                                 <tbody class="align-center">
@@ -121,46 +123,15 @@
             "serverSide": true,
             "ajax": "{{ route('admin.ajaxproduct') }}",
             "columns": [
-
-                { data: 'productname',render: function ( data, type, row ) {
-
-                    return data ? data.substr( 0, 50 ) : '...';
-
-                    }
-                },
-                { data: 'productcode',render: function ( data, type, row ) {
-
-                    return data ? data.substr( 0, 25 ) : '...';
-
-                    }
-                },
-                { data: 'productunit',render: function ( data, type, row ) {
-
-                    return data ? data.substr( 0, 25 ) : '...';
-
-                    }
-                },
-                { data: 'purchaseprice',render: function ( data, type, row ) {
-
-                    return data ? data.substr( 0, 50 ) : '...';
-
-                    }
-                },
-                { data: 'salesprice',render: function ( data, type, row ) {
-
-                    return data ? data.substr( 0, 25 ) : '...';
-
-                    }
-                },
-                { data: 'totalstock',render: function ( data, type, row ) {
-
-                    return data ? data.substr( 0, 25 ) : '...';
-
-                    }
-                },
-                { data: 'action'},
-
-            ]
+                { data: 'productname',name: 'products.productname'},
+                { data: 'name',name: 'categories.name'},
+                { data: 'productcode',name: 'products.productcode'},
+                { data: 'purchaseprice',name: 'products.purchaseprice'},
+                { data: 'salesprice',name: 'products.salesprice'},
+                { data: 'totalstock',name: 'products.totalstock'},
+                { data: 'propitername',name: 'suppliers.propitername'},
+                { data: 'productunit',name: 'products.productunit'}
+                ]
 
         });
     });

@@ -13,6 +13,7 @@ use App\Supplier;
 use Image;
 use File;
 use Auth;
+use DB;
 
 class ProductController extends Controller
 {
@@ -111,16 +112,34 @@ class ProductController extends Controller
                             'user_id',
                             'supplier_id'];
 
-        $product = Product::select($productColumns);
+        $product = DB::table('products')
+                ->join('suppliers', 'products.supplier_id', '=', 'suppliers.id')
+                ->join('categories', 'products.category_id', '=', 'categories.id')
+                ->select(['products.id','products.productname','products.productcode','products.image','products.productunit','products.description','products.purchaseprice','products.bodyrate','products.salesprice','products.discount','products.discount','products.totalstock','products.availability','products.category_id','products.user_id','products.supplier_id','categories.name','suppliers.propitername']);              
+
+        //$product = Product::select($productColumns);
 
 
         return Datatables::of($product)
               ->addColumn('action', function ($product) {
-                return '<small><a href="'.route('admin.editproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-info"><i class="material-icons">create</i></a></small>'.'<small><a onclick="return confirm(\'Are you sure want to delete?\')" href="'.route('admin.deleteproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-danger"><i class="material-icons">delete_sweep</i></a></small>';
+                return '<small><a href="'.route('admin.viewproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-info font-6"><i class="material-icons font-6">search</i></a></small>'.'<small><a href="'.route('admin.editproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-info font-6"><i class="material-icons font-6">create</i></a></small>'.'<small><a onclick="return confirm(\'Are you sure want to delete?\')" href="'.route('admin.deleteproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-danger font-6"><i class="material-icons font-6">delete_sweep</i></a></small>';
               })
               ->editColumn('id', 'ID: {{$id}}')
               ->removeColumn('id')
               ->make(true);
+    }
+    public function viewproduct($id){
+
+        $product = Product::find($id);
+
+        //dd($product->supplier->propitername);
+
+        if(is_null($product)){
+
+            return redirect(route('admin.productlist'))->with('product','Product info not found!');
+        }
+
+        return view('admin.product.view',['product'=>$product]);
     }
     public function editproduct($id){
         //dd($id);
@@ -152,7 +171,7 @@ class ProductController extends Controller
 
     }
     public function updateproduct(Request $request){
-        //dd($request->all());
+        
         $this->validate($request,[
             'category'=>'required',
             'productname'=>'required',
@@ -169,6 +188,8 @@ class ProductController extends Controller
           ]);
 
         $product = Product::find($request->get('id'));
+
+        //dd($product);
 
         if(is_null($product)){
             return redirect(route('admin.productlist'))->with('product','Product not found!');
@@ -192,7 +213,7 @@ class ProductController extends Controller
             $product->image = $imageName;
 
             $upload = new Common();
-            $imageUpload = $upload->updateImage($productcode,$image,'/images/product/');
+            $imageUpload = $upload->uproductsateImage($productcode,$image,'/images/product/');
 
         }else{
             $product->image = $product->image;
@@ -202,7 +223,7 @@ class ProductController extends Controller
         $product->supplier_id = $request->get('supplier');
         $product->update();
 
-        return redirect(route('admin.productlist'))->with('product','New product updated!');
+        return redirect(route('admin.productlist'))->with('product','New product uproductsated!');
 
     }
     public function deleteproduct($id){
