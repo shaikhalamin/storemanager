@@ -16,6 +16,7 @@
 	                        <tbody>
 	                            <tr><td><b>{!! title_case('companyname') !!}</b>:</td><td>{!! $supplier->companyname !!}</td></tr>
 								<tr><td><b>{!! title_case('propitername') !!}</b>:</td><td>{!! $supplier->propitername !!}</td></tr>
+								<tr><td><b>{!! title_case('productssale') !!}</b>:</td><td>{!! $supplier->productssale !!}</td></tr>
 								<tr><td><b>{!! title_case('mobile') !!}</b>:</td><td>{!! $supplier->mobile !!}</td></tr>
 								<tr><td><b>{!! title_case('telephone') !!}</b>:</td><td>{!! $supplier->telephone !!}</td></tr>
 								<tr><td><b>{!! title_case('email') !!}</b>:</td><td>{!! $supplier->email !!}</td></tr>

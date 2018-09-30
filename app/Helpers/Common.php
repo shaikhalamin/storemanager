@@ -40,7 +40,7 @@ class Common extends Model
         if(file_exists($existsFile)){
             $deleteFile = File::delete($existsFile);
             if($deleteFile){
-                $saveImage = Image::make($image)->save( public_path($path . $imageName ) );
+                $saveImage = Image::make($image)->resize(380, 340)->save( public_path($path . $imageName ) );
             }else{
                 dd('Unable to delete file');
             }
@@ -63,7 +63,7 @@ class Common extends Model
         if(file_exists($existsFile)){
             File::delete($existsFile);
         }
-        $saveImage = Image::make($imagefile)->save( public_path($path . $imageName ) );
+        $saveImage = Image::make($imagefile)->resize(380, 340)->save( public_path($path . $imageName ) );
 
         return $saveImage;
     }
