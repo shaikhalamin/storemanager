@@ -24,7 +24,7 @@
                                                 <option value="">-- Please select category --</option>
                                                 @if($categoryList)
                                                     @foreach($categoryList as $key => $category)
-                                                        <option value="{{ $key }}"> {{ $category }}</option>
+                                                        <option value="{{ $key }}" {{ Request::old('category') == $key ? 'selected' : ''}}> {{ $category }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
@@ -101,7 +101,7 @@
                                     <label for="password">Purchase Price</label>
                                     <div class="input-group spinner{{ $errors->has('purchaseprice') ? ' has-error' : '' }}" data-trigger="spinner">
                                         <div class="form-line">
-                                            <input name="purchaseprice" type="text" class="form-control text-center" value="0" data-rule="currency">
+                                            <input name="purchaseprice" type="text" class="form-control text-center" value="{{ old('purchaseprice') ? old('purchaseprice'): 0 }}" data-rule="currency">
                                         </div>
                                         <span class="input-group-addon">
                                             <a href="javascript:;" class="spin-up" data-spin="up"><i class="glyphicon glyphicon-chevron-up"></i></a>
@@ -119,7 +119,7 @@
                                     <label for="bodyrate">Body Rate</label>
                                     <div class="input-group spinner{{ $errors->has('bodyrate') ? ' has-error' : '' }}" data-trigger="spinner">
                                         <div class="form-line">
-                                            <input name="bodyrate" type="text" class="form-control text-center" value="0" data-rule="currency">
+                                            <input name="bodyrate" type="text" class="form-control text-center" value="{{ old('bodyrate') ? old('bodyrate'): 0 }}" data-rule="currency">
                                         </div>
                                         <span class="input-group-addon">
                                             <a href="javascript:;" class="spin-up" data-spin="up"><i class="glyphicon glyphicon-chevron-up"></i></a>
@@ -137,7 +137,7 @@
                                     <label for="salesprice">Sales Price</label>
                                     <div class="input-group spinner{{ $errors->has('salesprice') ? ' has-error' : '' }}" data-trigger="spinner">
                                         <div class="form-line">
-                                            <input name="salesprice" type="text" class="form-control text-center" value="0" data-rule="currency">
+                                            <input name="salesprice" type="text" class="form-control text-center" value="{{ old('salesprice') ? old('salesprice'): 0 }}" data-rule="currency">
                                         </div>
                                         <span class="input-group-addon">
                                             <a href="javascript:;" class="spin-up" data-spin="up"><i class="glyphicon glyphicon-chevron-up"></i></a>
@@ -158,7 +158,7 @@
                                     <label for="discount">Discount</label>
                                     <div class="input-group spinner{{ $errors->has('discount') ? ' has-error' : '' }}" data-trigger="spinner">
                                         <div class="form-line">
-                                            <input name="discount" type="text" class="form-control text-center" value="0" data-rule="currency">
+                                            <input name="discount" type="text" class="form-control text-center" value="{{ old('discount') ? old('discount'): 0 }}" data-rule="currency">
                                         </div>
                                         <span class="input-group-addon">
                                             <a href="javascript:;" class="spin-up" data-spin="up"><i class="glyphicon glyphicon-chevron-up"></i></a>
@@ -175,7 +175,7 @@
                                     <label for="totalstock">Total Stock</label>
                                     <div class="form-group{{ $errors->has('totalstock') ? ' has-error' : '' }}">
                                         <div class="form-line">
-                                            <input type="text" id="totalstock" class="form-control"  name="totalstock">
+                                            <input type="text" id="totalstock" class="form-control"  name="totalstock" value="{{ old('discount') ? old('discount'): 0 }}">
                                         </div>
                                         @if ($errors->has('totalstock'))
                                         <small class="alert alert-warning">
@@ -192,7 +192,7 @@
                                                 <option value="">-- Please select productunit --</option>
                                                 @if($unitList)
                                                     @foreach($unitList as $key => $unit)
-                                                        <option value="{{ $key }}"> {{ $unit }}</option>
+                                                        <option value="{{ $key }}" {{ old('productunit') == $key ? 'selected': '' }}> {{ $unit }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
@@ -212,8 +212,8 @@
                                         <div class="form-line">
                                             <select name="availability" class="form-control show-tick">
                                                 <option value="">-- Please select availability --</option>
-                                                <option value="1">In Stock</option>
-                                                <option value="0">Outof Stock</option>
+                                                <option value="1" {{ old('availability') == '1' ? 'selected': '' }}>In Stock</option>
+                                                <option value="0" {{ old('availability') == '0' ? 'selected': '' }}>Outof Stock</option>
                                             </select>
                                         </div>
                                         @if ($errors->has('availability'))
@@ -231,7 +231,7 @@
                                                 <option value="">-- Please select supplier --</option>
                                                 @if($supplierList)
                                                     @foreach($supplierList as $key => $supplier)
-                                                        <option value="{{ $key }}"> {{ $supplier }}</option>
+                                                        <option value="{{ $key }}" {{ old('availability') == $key ? 'selected': '' }}> {{ $supplier }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>

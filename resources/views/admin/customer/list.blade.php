@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="header">
                         <h2 class="">
-                        	Customer List
+                        	<span class="m-r-10"><a data-placement="bottom" data-toggle="tooltip" title="Create Customer" href="{{ route('admin.createcustomer') }}" class="btn btn-sm btn-info"><i class="material-icons">add</i></a></span>  Customer List
                         </h2>
                         
                     </div>

@@ -47,7 +47,7 @@ class CustomerController extends Controller
 		}
 		$customer->save();
 
-		return redirect(route('admin.supplierlist'))->with('customer','New customer created!');
+		return redirect(route('admin.customerlist'))->with('customer','New customer created!');
    	}
 
    	public function customerList(){
@@ -83,15 +83,74 @@ class CustomerController extends Controller
     }
 
     public function viewcustomer($id){
-		dd($id);    	
+
+		$customer = Customer::find($id);
+        if(is_null($customer)){
+
+            return redirect(route('admin.customerlist'));
+        }
+    	return view('admin.customer.view',['customer'=>$customer]);  	
     }
+
 	public function editcustomer($id){
-		dd($id);
+		//dd($id);
+		$customer = Customer::find($id);
+
+        if(is_null($customer)){
+
+            return redirect(route('admin.customerlist'));
+        }
+
+    	return view('admin.customer.edit',['customer'=>$customer]);
 	}
 	public function updatecustomer(Request $request){
-		dd($request->all());
+		//dd($request->all());
+		$this->validate($request,[
+			'customername'=> 'required',
+			'mobile'=> 'required',
+			'city'=> 'required',
+			'address'=> 'required',
+			'country'=> 'required',
+          ]);
+
+   		$customer = Customer::find($request->get('id'));
+
+		if(is_null($customer)){
+		  return redirect(route('admin.supplierlist'))->with('customer','Customer not found!');
+		}
+
+   		$customer->customername = $request->get('customername'); 
+		$customer->mobile = $request->get('mobile'); 
+		$customer->telephone = $request->get('telephone'); 
+		$customer->email = $request->get('email'); 
+		$customer->city = $request->get('city'); 
+		$customer->zipcode = $request->get('zipcode'); 
+		$customer->address = $request->get('address'); 
+		$customer->country = $request->get('country'); 
+		
+		if($request->has('image')){
+			$image = $request->file('image');
+            $customermobile = $request->input('mobile');
+            $imageName = strtolower($customermobile).".".$image->getClientOriginalExtension();
+            $customer->image = $imageName;
+            $upload = new Common();
+            $imageUpload = $upload->updateImage($customermobile,$image,'/images/customer/');
+		}
+		$customer->update();
+
+		return redirect(route('admin.customerlist'))->with('customer',' Customer info updated!');
 	}
 	public function deletecustomer($id){
-		dd($id);
+
+		$customer = Customer::find($id);
+
+        if(is_null($customer)){
+        	return redirect(route('admin.customerlist'))->with('customer','Customer not found!');
+        }
+        $deleteImage = new Common();
+        $deleteImage->deleteImage($customer->image,'/images/customer/');
+        $customer->delete();
+
+        return redirect(route('admin.customerlist'))->with('customer','Customer deleted !');
 	}
 }

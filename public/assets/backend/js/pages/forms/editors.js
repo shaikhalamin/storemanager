@@ -1,7 +1,7 @@
 $(function () {
     //CKEditor
     CKEDITOR.replace('ckeditor');
-    CKEDITOR.config.height = 300;
+    CKEDITOR.config.height = 200;
 
     //TinyMCE
     tinymce.init({

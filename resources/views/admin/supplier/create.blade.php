@@ -47,6 +47,7 @@
                                 </div>
                             </div>
 
+
                             <div class="row clearfix">
                                 <div class="col-sm-4">
                                     <label for="email">Email</label>
@@ -83,6 +84,28 @@
                                         @if ($errors->has('telephone'))
                                             <small class="alert alert-warning">
                                                 {{ $errors->first('telephone') }}
+                                            </small>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <label for="productssale">Products sales</label>
+                                    <div class="form-group{{ $errors->has('productssale') ? ' has-error' : '' }}">
+                                        <div class="form-line">
+                                            <textarea name="productssale" id="ckeditor" class="form-control" >{{ old('productssale') ? old('productssale') : '<h2>Supplier Sales</h2>
+                                            <p>Supplier offers various types of products </p>
+                                            <ul>
+                                                <li>... 0tk/kg on 24-09-2018</li>
+                                                <li></li>
+                                            </ul>' }}
+                                        </textarea>
+                                        </div>
+                                        @if ($errors->has('productssale'))
+                                            <small class="alert alert-warning">
+                                                {{ $errors->first('productssale') }}
                                             </small>
                                         @endif
                                     </div>
@@ -177,6 +200,9 @@
 
 @section('javascript')
     <script src="{{ asset('assets/backend/plugins/jquery-spinner/js/jquery.spinner.js') }}"></script>
+    <script src="{{ asset('assets/backend/plugins/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/backend/plugins/tinymce/tinymce.js') }}"></script>
+    <script src="{{ asset('assets/backend/js/pages/forms/editors.js') }}"></script>
 @endsection
 
 @section('css')

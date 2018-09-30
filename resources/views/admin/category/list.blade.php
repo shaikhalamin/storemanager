@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="header">
                         <h2 class="">
-                        	Category List
+                        	<span class="m-r-10"><a data-placement="bottom" data-toggle="tooltip" title="Create Category" href="{{ route('admin.createcategory') }}" class="btn btn-sm btn-info"><i class="material-icons">add</i></a></span> Category List
                         </h2>
                         
                     </div>

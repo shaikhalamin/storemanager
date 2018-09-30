@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="header">
                         <h2 class="">
-                        	Product Unit List
+                        	<span class="m-r-10"><a data-placement="bottom" data-toggle="tooltip" title="Create Unit" href="{{ route('admin.createunit') }}" class="btn btn-sm btn-info"><i class="material-icons">add</i></a></span> Product Unit List
                         </h2>
                         
                     </div>

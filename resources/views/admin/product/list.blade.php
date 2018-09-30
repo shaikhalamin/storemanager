@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="header">
                         <h2 class="">
-                        	Product List
+                        	<span class="m-r-10"><a data-placement="bottom" data-toggle="tooltip" title="Create Product" href="{{ route('admin.createproduct') }}" class="btn btn-sm btn-info"><i class="material-icons">add</i></a></span> Product List
                         </h2>
                         
                     </div>

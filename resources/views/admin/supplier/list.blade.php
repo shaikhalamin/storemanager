@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="header">
                         <h2 class="">
-                        	Supplier List
+                        	<span class="m-r-10"><a data-placement="bottom" data-toggle="tooltip" title="Create Supplier" href="{{ route('admin.createsupplier') }}" class="btn btn-sm btn-info"><i class="material-icons">add</i></a></span> Supplier List
                         </h2>
                         
                     </div>

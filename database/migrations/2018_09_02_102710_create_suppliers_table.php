@@ -17,12 +17,13 @@ class CreateSuppliersTable extends Migration
             $table->increments('id');
             $table->string('companyname');
             $table->string('propitername');
-            $table->string('suppliercode');
+            $table->string('suppliercode')->nullable();
             $table->string('mobile')->unique();
             $table->string('telephone')->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('city');
             $table->string('zipcode')->nullable();
+            $table->text('productssale')->nullable();
             $table->text('address');
             $table->string('country');
             $table->string('image')->default('default.jpg');

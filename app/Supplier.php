@@ -15,6 +15,7 @@ class Supplier extends Model
 							'city',
 							'zipcode',
 							'address',
+							'productssale',
 							'country',
 							'image'
 						];

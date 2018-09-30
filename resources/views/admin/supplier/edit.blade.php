@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                            Create Supplier                            
+                            Edit Supplier                            
                         </h2>
                     </div>
                     <div class="body">
@@ -91,6 +91,24 @@
 
                             <div class="row clearfix">
                                 <div class="col-sm-12">
+                                    <label for="productssale">Products sales</label>
+                                    <div class="form-group{{ $errors->has('productssale') ? ' has-error' : '' }}">
+                                        <div class="form-line">
+                                            <textarea name="productssale" id="ckeditor" class="form-control" >
+                                                {!! $supplier->productssale ? $supplier->productssale : old('productssale') !!}
+                                        </textarea>
+                                        </div>
+                                        @if ($errors->has('productssale'))
+                                            <small class="alert alert-warning">
+                                                {{ $errors->first('productssale') }}
+                                            </small>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-sm-12">
                                     <label for="address">Address</label>
                                     <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                                         <div class="form-line">
@@ -164,7 +182,7 @@
                         	</div>
 
                             <br>
-                            <button type="submit" class="btn bg-teal m-t-15 waves-effect">CREATE</button>
+                            <button type="submit" class="btn bg-teal m-t-15 waves-effect">UPDATE</button>
                         </form>
                     </div>
                 </div>
@@ -177,6 +195,9 @@
 
 @section('javascript')
     <script src="{{ asset('assets/backend/plugins/jquery-spinner/js/jquery.spinner.js') }}"></script>
+    <script src="{{ asset('assets/backend/plugins/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/backend/plugins/tinymce/tinymce.js') }}"></script>
+    <script src="{{ asset('assets/backend/js/pages/forms/editors.js') }}"></script>
 @endsection
 
 @section('css')

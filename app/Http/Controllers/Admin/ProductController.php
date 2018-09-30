@@ -55,7 +55,7 @@ class ProductController extends Controller
             'totalstock'=>'required',
             'productunit'=>'required',
             'availability'=>'required',
-            /*'supplier'=>'required'*/
+            'supplier'=>'required'
           ]);
 
         $product = new Product();
@@ -223,7 +223,7 @@ class ProductController extends Controller
         $product->supplier_id = $request->get('supplier');
         $product->update();
 
-        return redirect(route('admin.productlist'))->with('product','New product uproductsated!');
+        return redirect(route('admin.productlist'))->with('product','New product updated!');
 
     }
     public function deleteproduct($id){
