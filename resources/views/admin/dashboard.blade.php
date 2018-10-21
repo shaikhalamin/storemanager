@@ -24,18 +24,19 @@
                     </div>
                 </div>
             </a>
-            
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box bg-cyan hover-expand-effect">
-                    <div class="icon">
-                        <i class="material-icons">help</i>
-                    </div>
-                    <div class="content">
-                        <div class="text">All Products</div>
-                        <div class="number count-to">{{ $productCount ? $productCount : 0 }}</div>
+            <a href="{{ route('admin.productlist') }}" style="cursor: pointer !impotant;">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-cyan hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">help</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">All Products</div>
+                            <div class="number count-to">{{ $productCount ? $productCount : 0 }}</div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-light-green hover-expand-effect">
                     <div class="icon">
@@ -65,35 +66,33 @@
                 <div class="card">
                     <div class="header">
                         <h2 class="">
-                            Product List
+                            <span class="m-r-10"><a data-placement="bottom" data-toggle="tooltip" title="Create Product" href="{{ route('admin.createproduct') }}" class="btn btn-sm btn-info"><i class="material-icons">add</i></a></span> Product List
                         </h2>
                         
                     </div>
+
                     <div class="body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover category_list dataTable" id="product_list">
+                            <table class="table table-bordered table-striped table-hover category_list dataTable" id="supplier_list">
                                 <thead>
                                     <tr>
                                         <th class="align-center">productname</th>
-                                        <th class="align-center">categoryname</th>
                                         <th class="align-center">productcode</th>
                                         <th class="align-center">purchaseprice</th>
                                         <th class="align-center">salesprice</th>
                                         <th class="align-center">totalstock</th>
-                                        <th class="align-center">purchasedfrom</th>
-                                        <th class="align-center">productunit</th>
+                                        <th class="align-center">action</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tfoot>
-                                    <tr>
+                                    <tr class="align-center">
                                         <th class="align-center">productname</th>
-                                        <th class="align-center">categoryname</th>
                                         <th class="align-center">productcode</th>
                                         <th class="align-center">purchaseprice</th>
                                         <th class="align-center">salesprice</th>
                                         <th class="align-center">totalstock</th>
-                                        <th class="align-center">purchasedfrom</th>
-                                        <th class="align-center">productunit</th>
+                                        <th class="align-center">action</th>
                                     </tr>
                                 </tfoot>
                                 <tbody class="align-center">
@@ -118,31 +117,57 @@
 
 <script src="{{ asset('assets/backend/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
 
+
 <script type="text/javascript">
     $(document).ready( function () {
-        $('#product_list').DataTable({
+        $('#supplier_list').DataTable({
             "pageLength": 10,
             "processing": true,
             "serverSide": true,
             "ajax": "{{ route('admin.ajaxproduct') }}",
             "columns": [
-                { data: 'productname',name: 'products.productname'},
-                { data: 'name',name: 'categories.name'},
-                { data: 'productcode',name: 'products.productcode'},
-                { data: 'purchaseprice',name: 'products.purchaseprice'},
-                { data: 'salesprice',name: 'products.salesprice'},
-                { data: 'totalstock',name: 'products.totalstock'},
-                { data: 'propitername',name: 'suppliers.propitername'},
-                { data: 'productunit',name: 'products.productunit'}
-                ]
+                { data: 'productname',render: function ( data, type, row ) {
+
+                    return data ? data.substr( 0, 25 ) : '...';
+
+                    }
+                },
+                
+                { data: 'productcode',render: function ( data, type, row ) {
+
+                    return data ? data.substr( 0, 25 ) : '...';
+
+                    }
+                },
+                { data: 'purchaseprice',render: function ( data, type, row ) {
+
+                    return data ? data : '...';
+
+                    }
+                },
+                { data: 'salesprice',render: function ( data, type, row ) {
+
+                    return data;
+
+                    }
+                },
+                { data: 'totalstock',render: function ( data, type, row ) {
+
+                    return data;
+
+                    }
+                },
+                { data: 'action'},
+
+            ]
 
         });
     });
 
-    var hasNotification = "{{Session::has('product')}}";
+    var hasNotification = "{{Session::has('supplier')}}";
     if(hasNotification){
 
-        var getNotification = "{{Session::get('product')}}";
+        var getNotification = "{{Session::get('supplier')}}";
 
         $.notify({
             // options

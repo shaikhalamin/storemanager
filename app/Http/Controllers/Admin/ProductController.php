@@ -112,13 +112,23 @@ class ProductController extends Controller
                             'user_id',
                             'supplier_id'];
 
-        $product = DB::table('products')
+        /*$product = DB::table('products')
                 ->join('suppliers', 'products.supplier_id', '=', 'suppliers.id')
                 ->join('categories', 'products.category_id', '=', 'categories.id')
-                ->select(['products.id','products.productname','products.productcode','products.image','products.productunit','products.description','products.purchaseprice','products.bodyrate','products.salesprice','products.discount','products.discount','products.totalstock','products.availability','products.category_id','products.user_id','products.supplier_id','categories.name','suppliers.propitername']);              
+                ->select(['products.id','products.productname','products.productcode','products.image','products.productunit','products.description','products.purchaseprice','products.bodyrate','products.salesprice','products.discount','products.discount','products.totalstock','products.availability','products.category_id','products.user_id','products.supplier_id','categories.name','suppliers.propitername']);*/              
 
         //$product = Product::select($productColumns);
 
+
+        /*return Datatables::of($product)
+              ->addColumn('action', function ($product) {
+                return '<small><a href="'.route('admin.viewproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-info font-6"><i class="material-icons font-6">search</i></a></small>'.'<small><a href="'.route('admin.editproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-info font-6"><i class="material-icons font-6">create</i></a></small>'.'<small><a onclick="return confirm(\'Are you sure want to delete?\')" href="'.route('admin.deleteproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-danger font-6"><i class="material-icons font-6">delete_sweep</i></a></small>';
+              })
+              ->editColumn('id', 'ID: {{$id}}')
+              ->removeColumn('id')
+              ->make(true);*/
+
+        $product = Product::select($productColumns);
 
         return Datatables::of($product)
               ->addColumn('action', function ($product) {
@@ -127,6 +137,7 @@ class ProductController extends Controller
               ->editColumn('id', 'ID: {{$id}}')
               ->removeColumn('id')
               ->make(true);
+
     }
     public function viewproduct($id){
 

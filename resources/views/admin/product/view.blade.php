@@ -27,7 +27,7 @@
                                     <tr><td><b>{!! title_case('availability') !!}</b>:</td><td>{!! $product->availability !!}</td></tr>
                                     <tr><td><b>{!! title_case('category') !!}</b>:</td><td>{!! $product->category->name !!}</td></tr>
                                     <tr><td><b>{!! title_case('createdby') !!}</b>:</td><td>{!! $product->user->name !!}</td></tr>
-                                    <tr><td><b>{!! title_case('supplier') !!}</b>:</td><td>{!! $product->supplier->propitername !!}</td></tr>
+                                    <tr><td><b>{!! title_case('supplier') !!}</b>:</td><td claas="text-uppercase"><a href="{{ route('admin.viewsupplier', ['id'=> $product->supplier->id]) }}">{!! $product->supplier->propitername !!}</a></td></tr>
 
                                     @if(isset($product->image))
                                     <tr>

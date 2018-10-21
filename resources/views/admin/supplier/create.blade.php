@@ -95,7 +95,7 @@
                                     <label for="productssale">Products sales</label>
                                     <div class="form-group{{ $errors->has('productssale') ? ' has-error' : '' }}">
                                         <div class="form-line">
-                                            <textarea name="productssale" id="ckeditor" class="form-control" >{{ old('productssale') ? old('productssale') : '<h2>Supplier Sales</h2>
+                                            <textarea name="productssale" id="ckeditor" class="form-control" >{{ old('productssale') ? old('productssale') : '<h5>Supplier Sales</h5>
                                             <p>Supplier offers various types of products </p>
                                             <ul>
                                                 <li>... 0tk/kg on 24-09-2018</li>

@@ -21,7 +21,6 @@
                                     <tr>
                                         <th class="align-center">name</th>
                                         <th class="align-center">slug</th>
-                                        <th class="align-center">created_at</th>
                                         <th class="align-center">action</th>
                                         
                                     </tr>
@@ -30,7 +29,6 @@
                                     <tr class="align-center">
                                         <th class="align-center">name</th>
                                         <th class="align-center">slug</th>
-                                        <th class="align-center">created_at</th>
                                         <th class="align-center">action</th>
                                     </tr>
                                 </tfoot>
@@ -63,7 +61,10 @@
         	"pageLength": 10,
             "processing": true,
             "serverSide": true,
-            "ajax": "{{ route('admin.ajaxcategory') }}",
+            "ajax": {
+            	"url": "{{ route('admin.ajaxcategory') }}",
+            	"type": "GET"
+            },
             "columns": [
 	            { data: 'name',render: function ( data, type, row ) {
 
@@ -77,12 +78,12 @@
 
 		        	}
 		        },
-	            { data: 'created_at',render: function ( data, type, row ) {
+	            /*{ data: 'created_at',render: function ( data, type, row ) {
 
 		            return data ? data.substr( 0, 25 ) : '...';
 
 		        	}
-		        },
+		        },*/
 		        { data: 'action'},
 
             ]
