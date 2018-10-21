@@ -247,7 +247,7 @@ class ProductController extends Controller
             return redirect(route('admin.categorylist'))->with('category','Category not found!');
         }
 
-        return view('admin.product.listbycategory',['catid'=>$catid]);
+        return view('admin.product.listbycategory',['catid'=>$catid,'veryfycat'=>$veryfycat]);
 
     }
 

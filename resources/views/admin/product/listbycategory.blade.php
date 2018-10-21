@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="header">
                         <h2 class="">
-                        	Products By Category
+                        	Products By Category ->{{$veryfycat->name}} ({{ count($veryfycat->products) }})
                         </h2>
                         
                     </div>
