@@ -42,6 +42,8 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
     Route::get('product/edit/{id}','ProductController@editproduct')->name('editproduct');
     Route::post('product/update','ProductController@updateproduct')->name('updateproduct');
     Route::get('product/delete/{id}','ProductController@deleteproduct')->name('deleteproduct');
+    Route::get('product/getallproducts/{catid}','ProductController@getallproducts')->name('getallproducts');
+    Route::get('product/getajaxall/{catid}','ProductController@getProductsByCategory')->name('getcatproducts');
 
     /* Product Unit Routes */
     Route::get('productunit/create','ProductUnitController@index')->name('createunit');

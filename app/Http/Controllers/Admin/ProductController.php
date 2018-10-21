@@ -239,4 +239,47 @@ class ProductController extends Controller
 
         return redirect(route('admin.productlist'))->with('product','Product deleted !');
     }
+
+    public function getallproducts($catid){
+
+        $veryfycat = Category::find($catid);
+        if(is_null($veryfycat)){
+            return redirect(route('admin.categorylist'))->with('category','Category not found!');
+        }
+
+        return view('admin.product.listbycategory',['catid'=>$catid]);
+
+    }
+
+
+    public function getProductsByCategory($categoryId){
+
+        $productColumns = [
+                            'id',
+                            'productname',
+                            'productcode',
+                            'image',
+                            'productunit',
+                            'description',
+                            'purchaseprice',
+                            'bodyrate',
+                            'salesprice',
+                            'discount',
+                            'totalstock',
+                            'availability',
+                            'category_id',
+                            'user_id',
+                            'supplier_id'];
+
+
+        $product = Product::where('category_id', $categoryId)->select($productColumns);
+
+        return Datatables::of($product)
+              ->addColumn('action', function ($product) {
+                return '<small><a href="'.route('admin.viewproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-info font-6"><i class="material-icons font-6">search</i></a></small>'.'<small><a href="'.route('admin.editproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-info font-6"><i class="material-icons font-6">create</i></a></small>'.'<small><a onclick="return confirm(\'Are you sure want to delete?\')" href="'.route('admin.deleteproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-danger font-6"><i class="material-icons font-6">delete_sweep</i></a></small>';
+              })
+              ->editColumn('id', 'ID: {{$id}}')
+              ->removeColumn('id')
+              ->make(true);
+    }
 }

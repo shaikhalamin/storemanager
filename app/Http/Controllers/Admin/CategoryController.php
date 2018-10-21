@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yajra\Datatables\Datatables;
 use App\Category;
+use App\Product;
 
 class CategoryController extends Controller
 {
@@ -23,7 +24,7 @@ class CategoryController extends Controller
 
    		return Datatables::of($categories)
               ->addColumn('action', function ($categories) {
-                return '<small><a href="'.route('admin.categoryedit', ['id'=> $categories->id]).'" class="btn btn-sm btn-info"><i class="material-icons">create</i></a></small>'.'<small><a onclick="return confirm(\'Are you sure want to delete?\')" href="'.route('admin.categorydelete', ['id'=> $categories->id]).'" class="btn btn-sm btn-danger"><i class="material-icons">delete_sweep</i></a></small>';
+                return '<small><a href="'.route('admin.getallproducts', ['id'=> $categories->id]).'" class="btn btn-sm btn-info"><i class="material-icons">search</i></a></small>'.'<small><a href="'.route('admin.categoryedit', ['id'=> $categories->id]).'" class="btn btn-sm btn-info"><i class="material-icons">create</i></a></small>'.'<small><a onclick="return confirm(\'Are you sure want to delete?\')" href="'.route('admin.categorydelete', ['id'=> $categories->id]).'" class="btn btn-sm btn-danger"><i class="material-icons">delete_sweep</i></a></small>';
               })
               ->editColumn('id', 'ID: {{$id}}')
               ->removeColumn('id')
@@ -86,6 +87,5 @@ class CategoryController extends Controller
 
        return redirect(route('admin.categorylist'))->with('category','Category deleted !');
     }
-
 
 }
