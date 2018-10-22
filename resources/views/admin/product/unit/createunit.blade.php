@@ -19,7 +19,7 @@
                                     <div class="form-group form-float{{ $errors->has('name') ? ' has-error' : '' }}">
                                         <div class="form-line">
                                             <input type="text" name="name" class="form-control" value="{{ old('name') }}" />
-                                            <label class="form-label">Unit Name</label>
+                                            <label class="form-label">Unit Name e.g(kg,litre,pkt,gm)</label>
                                         </div>
                                         @if ($errors->has('name'))
 			                                <small class="text-danger">

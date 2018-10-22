@@ -20,6 +20,11 @@
 								<tr><td><b>{!! title_case('mobile') !!}</b>:</td><td>{!! $supplier->mobile !!}</td></tr>
 								<tr><td><b>{!! title_case('telephone') !!}</b>:</td><td>{!! $supplier->telephone !!}</td></tr>
 								<tr><td><b>{!! title_case('email') !!}</b>:</td><td>{!! $supplier->email !!}</td></tr>
+
+								<tr><td><b>{!! title_case('due') !!}</b>:</td><td>{!! $supplier->due !!}</td></tr>
+
+								<tr><td><b>{!! title_case('deposit') !!}</b>:</td><td>{!! $supplier->deposit !!}</td></tr>
+
 								<tr><td><b>{!! title_case('city') !!}</b>:</td><td>{!! $supplier->city !!}</td></tr>
 								<tr><td><b>{!! title_case('zipcode') !!}</b>:</td><td>{!! $supplier->zipcode !!}</td></tr>
 								<tr><td><b>{!! title_case('address') !!}</b>:</td><td>{!! $supplier->address !!}</td></tr>

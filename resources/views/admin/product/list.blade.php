@@ -20,21 +20,16 @@
                                 <thead>
                                     <tr>
                                         <th class="align-center">productname</th>
-                                        <th class="align-center">productcode</th>
                                         <th class="align-center">purchaseprice</th>
                                         <th class="align-center">salesprice</th>
-                                        <th class="align-center">totalstock</th>
                                         <th class="align-center">action</th>
-                                        
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr class="align-center">
                                         <th class="align-center">productname</th>
-                                        <th class="align-center">productcode</th>
                                         <th class="align-center">purchaseprice</th>
                                         <th class="align-center">salesprice</th>
-                                        <th class="align-center">totalstock</th>
                                         <th class="align-center">action</th>
                                     </tr>
                                 </tfoot>
@@ -61,7 +56,6 @@
 
 <script src="{{ asset('assets/backend/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
 
-
 <script type="text/javascript">
     $(document).ready( function () {
         $('#supplier_list').DataTable({
@@ -72,35 +66,25 @@
             "columns": [
                 { data: 'productname',render: function ( data, type, row ) {
 
-                    return data ? data.substr( 0, 25 ) : '...';
+                    return data;
 
                     }
                 },
                 
-                { data: 'productcode',render: function ( data, type, row ) {
-
-                    return data ? data.substr( 0, 25 ) : '...';
-
-                    }
-                },
                 { data: 'purchaseprice',render: function ( data, type, row ) {
 
-                    return data ? data : '...';
+                    return data;
 
                     }
                 },
+                
                 { data: 'salesprice',render: function ( data, type, row ) {
 
                     return data;
 
                     }
                 },
-                { data: 'totalstock',render: function ( data, type, row ) {
-
-                    return data;
-
-                    }
-                },
+                
                 { data: 'action'},
 
             ]
@@ -159,7 +143,6 @@
 
 
 </script>
-
 
 @endsection
 

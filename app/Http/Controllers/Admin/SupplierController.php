@@ -23,18 +23,24 @@ class SupplierController extends Controller
 			"companyname" => 'required',
 			"propitername" => 'required',
 			"mobile" => 'required|unique:suppliers',
-			"address" => 'required',
-			"city" => 'required',
-			"country" => 'required'
-          ]);
+      ]);
 
-   		$supplier = new Supplier();
-   		$supplier->companyname = $request->get('companyname'); 
+   	$supplier = new Supplier();
+   	$supplier->companyname = $request->get('companyname'); 
 		$supplier->propitername = $request->get('propitername'); 
 		$supplier->suppliercode = ""; 
 		$supplier->mobile = $request->get('mobile'); 
 		$supplier->telephone = $request->get('telephone'); 
-		$supplier->email = $request->get('email'); 
+		$supplier->email = $request->get('email');
+
+    
+    $supplier->due = $request->get('due');
+    $supplier->deposit = $request->get('deposit');
+
+    if($request->get('deposit')){
+          $supplier->due = $supplier->due - $request->get('deposit');
+        }
+
 		$supplier->city = $request->get('city'); 
 		$supplier->zipcode = $request->get('zipcode');
     $supplier->productssale = $request->get('productssale');
@@ -68,6 +74,7 @@ class SupplierController extends Controller
 							'mobile',
 							'telephone',
 							'email',
+              'due',
 							'city',
 							'zipcode',
               'productssale',
@@ -119,10 +126,7 @@ class SupplierController extends Controller
 			"companyname" => 'required',
 			"propitername" => 'required',
 			"mobile" => 'required',
-			"address" => 'required',
-			"city" => 'required',
-			"country" => 'required'
-          ]);
+      ]);
 
       $supplier = Supplier::find($request->get('id'));
 
@@ -137,6 +141,12 @@ class SupplierController extends Controller
   		$supplier->mobile = $request->get('mobile');
   		$supplier->telephone = $request->get('telephone');
   		$supplier->email = $request->get('email');
+      $supplier->due = $request->get('due');
+      $supplier->deposit = $request->get('deposit');
+
+      if($request->get('deposit')){
+        $supplier->due = $supplier->due - $request->get('deposit');
+      }
   		$supplier->city = $request->get('city');
   		$supplier->zipcode = $request->get('zipcode');
       $supplier->productssale = $request->get('productssale');

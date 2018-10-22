@@ -20,7 +20,6 @@
                                 <thead>
                                     <tr>
                                         <th class="align-center">name</th>
-                                        <th class="align-center">slug</th>
                                         <th class="align-center">action</th>
                                         
                                     </tr>
@@ -28,7 +27,6 @@
                                 <tfoot>
                                     <tr class="align-center">
                                         <th class="align-center">name</th>
-                                        <th class="align-center">slug</th>
                                         <th class="align-center">action</th>
                                     </tr>
                                 </tfoot>
@@ -68,13 +66,7 @@
             "columns": [
 	            { data: 'name',render: function ( data, type, row ) {
 
-		            return data ? data.substr( 0, 25 ) : '...';
-
-		        	}
-		        },
-	            { data: 'slug',render: function ( data, type, row ) {
-
-		            return data ? data.substr( 0, 25 ) : '...';
+		            return data.toUpperCase();
 
 		        	}
 		        },

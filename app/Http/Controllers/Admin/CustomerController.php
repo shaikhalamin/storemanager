@@ -21,9 +21,6 @@ class CustomerController extends Controller
    		$this->validate($request,[
 			'customername'=> 'required',
 			'mobile'=> 'required|unique:customers',
-			'city'=> 'required',
-			'address'=> 'required',
-			'country'=> 'required',
           ]);
 
    		$customer = new Customer();
@@ -31,7 +28,15 @@ class CustomerController extends Controller
    		$customer->customername = $request->get('customername'); 
 		$customer->mobile = $request->get('mobile'); 
 		$customer->telephone = $request->get('telephone'); 
-		$customer->email = $request->get('email'); 
+		$customer->email = $request->get('email');
+
+		$customer->due = $request->get('due');
+		$customer->deposit = $request->get('deposit');
+
+		if($request->get('deposit')){
+      		$customer->due = $customer->due - $request->get('deposit');
+      	}
+
 		$customer->city = $request->get('city'); 
 		$customer->zipcode = $request->get('zipcode'); 
 		$customer->address = $request->get('address'); 
@@ -62,6 +67,7 @@ class CustomerController extends Controller
 							'mobile',
 							'telephone',
 							'email',
+							'due',
 							'city',
 							'zipcode',
 							'address',
@@ -108,9 +114,6 @@ class CustomerController extends Controller
 		$this->validate($request,[
 			'customername'=> 'required',
 			'mobile'=> 'required',
-			'city'=> 'required',
-			'address'=> 'required',
-			'country'=> 'required',
           ]);
 
    		$customer = Customer::find($request->get('id'));
@@ -122,7 +125,15 @@ class CustomerController extends Controller
    		$customer->customername = $request->get('customername'); 
 		$customer->mobile = $request->get('mobile'); 
 		$customer->telephone = $request->get('telephone'); 
-		$customer->email = $request->get('email'); 
+		$customer->email = $request->get('email');
+
+      	$customer->due = $request->get('due');
+		$customer->deposit = $request->get('deposit');
+
+		if($request->get('deposit')){
+      		$customer->due = $customer->due - $request->get('deposit');
+      	}
+
 		$customer->city = $request->get('city'); 
 		$customer->zipcode = $request->get('zipcode'); 
 		$customer->address = $request->get('address'); 

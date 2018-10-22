@@ -12,6 +12,8 @@ class Supplier extends Model
 							'mobile',
 							'telephone',
 							'email',
+							'due',
+							'deposit',
 							'city',
 							'zipcode',
 							'address',

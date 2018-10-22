@@ -22,7 +22,7 @@
                                         <th class="align-center">propitername</th>
                                         <th class="align-center">mobile</th>
 										<th class="align-center">address</th>
-										<th class="align-center">created_at</th>
+										<th class="align-center">due</th>
                                         <th class="align-center">action</th>
                                         
                                     </tr>
@@ -32,7 +32,7 @@
                                         <th class="align-center">propitername</th>
                                         <th class="align-center">mobile</th>
 										<th class="align-center">address</th>
-										<th class="align-center">created_at</th>
+										<th class="align-center">due</th>
                                         <th class="align-center">action</th>
                                     </tr>
                                 </tfoot>
@@ -86,7 +86,7 @@
 
 		        	}
 		        },
-		        { data: 'created_at',render: function ( data, type, row ) {
+		        { data: 'due',render: function ( data, type, row ) {
 
 		            return data;
 

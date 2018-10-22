@@ -20,23 +20,19 @@
                                 <thead>
                                     <tr>
                                         <th class="align-center">productname</th>
-										<th class="align-center">productcode</th>
-										<th class="align-center">productunit</th>
-										<th class="align-center">purchaseprice</th>
-										<th class="align-center">salesprice</th>
-										<th class="align-center">totalstock</th>
-										<th class="align-center">action</th>
+                                        <th class="align-center">purchaseprice</th>
+                                        <th class="align-center">salesprice</th>
+                                        
+                                        <th class="align-center">action</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
-                                    <tr>
+                                    <tr class="align-center">
                                         <th class="align-center">productname</th>
-										<th class="align-center">productcode</th>
-										<th class="align-center">productunit</th>
-										<th class="align-center">purchaseprice</th>
-										<th class="align-center">salesprice</th>
-										<th class="align-center">totalstock</th>
-										<th class="align-center">action</th>
+                                        <th class="align-center">purchaseprice</th>
+                                        <th class="align-center">salesprice</th>
+                                        
+                                        <th class="align-center">action</th>
                                     </tr>
                                 </tfoot>
                                 <tbody class="align-center">
@@ -65,51 +61,36 @@
 
 
 <script type="text/javascript">
-	$(document).ready( function () {
+
+    $(document).ready( function () {
         $('#product_list').DataTable({
-        	"pageLength": 10,
+            "pageLength": 10,
             "processing": true,
             "serverSide": true,
             "ajax": "{{ route('admin.getcatproducts', ['catid'=> $catid]) }}",
             "columns": [
+                { data: 'productname',render: function ( data, type, row ) {
 
-	            { data: 'productname',render: function ( data, type, row ) {
+                    return data ? data.substr( 0, 25 ) : '...';
 
-		            return data ? data.substr( 0, 50 ) : '...';
+                    }
+                },
+                
+                { data: 'purchaseprice',render: function ( data, type, row ) {
 
-		        	}
-		        },
-	            { data: 'productcode',render: function ( data, type, row ) {
+                    return data;
 
-		            return data ? data.substr( 0, 25 ) : '...';
+                    }
+                },
+                
+                { data: 'salesprice',render: function ( data, type, row ) {
 
-		        	}
-		        },
-	            { data: 'productunit',render: function ( data, type, row ) {
+                    return data;
 
-		            return data ? data.substr( 0, 25 ) : '...';
-
-		        	}
-		        },
-		        { data: 'purchaseprice',render: function ( data, type, row ) {
-
-		            return data ? data.substr( 0, 50 ) : '...';
-
-		        	}
-		        },
-	            { data: 'salesprice',render: function ( data, type, row ) {
-
-		            return data ? data.substr( 0, 25 ) : '...';
-
-		        	}
-		        },
-		        { data: 'totalstock',render: function ( data, type, row ) {
-
-		            return data ? data.substr( 0, 25 ) : '...';
-
-		        	}
-		        },
-		        { data: 'action'},
+                    }
+                },
+                
+                { data: 'action'},
 
             ]
 

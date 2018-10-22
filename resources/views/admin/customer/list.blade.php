@@ -21,10 +21,8 @@
                                     <tr>
                                         <th class="align-center">customername</th>
 										<th class="align-center">mobile</th>
-										<th class="align-center">email</th>
-										<th class="align-center">city</th>
-										<th class="align-center">country</th>
-										<th class="align-center">created_at</th>
+										<th class="align-center">address</th>
+										<th class="align-center">due</th>
 										<th class="align-center">action</th>
                                     </tr>
                                 </thead>
@@ -32,10 +30,8 @@
                                     <tr class="align-center">
                                         <th class="align-center">customername</th>
 										<th class="align-center">mobile</th>
-										<th class="align-center">email</th>
-										<th class="align-center">city</th>
-										<th class="align-center">country</th>
-										<th class="align-center">created_at</th>
+										<th class="align-center">address</th>
+										<th class="align-center">due</th>
 										<th class="align-center">action</th>
                                     </tr>
                                 </tfoot>
@@ -83,27 +79,16 @@
 
 		        	}
 		        },
-		        { data: 'email',render: function ( data, type, row ) {
+		        { data: 'address',render: function ( data, type, row ) {
 
 		            return data ? data.substr( 0, 25 ) : '...';
 
 		        	}
 		        },
-		        { data: 'city',render: function ( data, type, row ) {
+		        
+	            { data: 'due',render: function ( data, type, row ) {
 
-		            return data ? data.substr( 0, 25 ) : '...';
-
-		        	}
-		        },
-		        { data: 'country',render: function ( data, type, row ) {
-
-		            return data ? data.substr( 0, 25 ) : '...';
-
-		        	}
-		        },
-	            { data: 'created_at',render: function ( data, type, row ) {
-
-		            return data ? data.substr( 0, 25 ) : '...';
+		            return data;
 
 		        	}
 		        },

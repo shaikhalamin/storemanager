@@ -63,6 +63,7 @@
 
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
                         <h2 class="">
@@ -77,22 +78,19 @@
                                 <thead>
                                     <tr>
                                         <th class="align-center">productname</th>
-                                        <th class="align-center">productcode</th>
                                         <th class="align-center">purchaseprice</th>
                                         <th class="align-center">salesprice</th>
-                                        <th class="align-center">totalstock</th>
-                                        <th class="align-center">action</th>
+                                        
                                         
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr class="align-center">
                                         <th class="align-center">productname</th>
-                                        <th class="align-center">productcode</th>
                                         <th class="align-center">purchaseprice</th>
                                         <th class="align-center">salesprice</th>
-                                        <th class="align-center">totalstock</th>
-                                        <th class="align-center">action</th>
+                                        
+                                        
                                     </tr>
                                 </tfoot>
                                 <tbody class="align-center">
@@ -102,6 +100,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
 
@@ -133,31 +132,20 @@
                     }
                 },
                 
-                { data: 'productcode',render: function ( data, type, row ) {
-
-                    return data ? data.substr( 0, 25 ) : '...';
-
-                    }
-                },
                 { data: 'purchaseprice',render: function ( data, type, row ) {
 
-                    return data ? data : '...';
+                    return data;
 
                     }
                 },
+                
                 { data: 'salesprice',render: function ( data, type, row ) {
 
                     return data;
 
                     }
                 },
-                { data: 'totalstock',render: function ( data, type, row ) {
-
-                    return data;
-
-                    }
-                },
-                { data: 'action'},
+                
 
             ]
 

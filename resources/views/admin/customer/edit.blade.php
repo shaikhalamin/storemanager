@@ -78,6 +78,35 @@
                             </div>
 
                             <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <label for="due">Due</label>
+                                    <div class="form-group{{ $errors->has('due') ? ' has-error' : '' }}">
+                                        <div class="form-line">
+                                            <input type="text" id="due" class="form-control" name="due" value="{{ $customer->due ? $customer->due : old('due') }}">
+                                        </div>
+                                        @if ($errors->has('due'))
+                                            <small class="alert alert-warning">
+                                                {{ $errors->first('due') }}
+                                            </small>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="deposit">Deposit</label>
+                                    <div class="form-group{{ $errors->has('deposit') ? ' has-error' : '' }}">
+                                        <div class="form-line">
+                                            <input type="text" id="deposit" class="form-control" name="deposit">
+                                        </div>
+                                        @if ($errors->has('deposit'))
+                                            <small class="alert alert-warning">
+                                                {{ $errors->first('deposit') }}
+                                            </small>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <label for="address">Address</label>
                                     <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">

@@ -153,6 +153,72 @@
                                 </div>
 
                             </div>
+
+                            <div class="row clearfix">
+                                <div class="col-sm-3">
+                                    <label for="password">Old Price</label>
+                                    <div class="input-group spinner{{ $errors->has('oldprice') ? ' has-error' : '' }}" data-trigger="spinner">
+                                        <div class="form-line">
+                                            <input name="oldprice" type="text" class="form-control text-center" value="{{ $product->oldprice ? $product->oldprice : old('oldprice') }}" data-rule="currency">
+                                        </div>
+                                        <span class="input-group-addon">
+                                            <a href="javascript:;" class="spin-up" data-spin="up"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                                            <a href="javascript:;" class="spin-down" data-spin="down"><i class="glyphicon glyphicon-chevron-down"></i></a>
+                                        </span>
+                                        @if ($errors->has('oldprice'))
+                                        <small class="alert alert-warning">
+                                            {{ $errors->first('oldprice') }}
+                                        </small>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <label for="oldlabel">Old label</label>
+                                    <div class="form-group{{ $errors->has('oldlabel') ? ' has-error' : '' }}">
+                                        <div class="form-line">
+                                            <input type="text" id="oldlabel" class="form-control" name="oldlabel" value="{{ $product->oldlabel ? $product->oldlabel : old('oldlabel') }}">
+                                        </div>
+                                        @if ($errors->has('oldlabel'))
+                                            <small class="alert alert-warning">
+                                                {{ $errors->first('oldlabel') }}
+                                            </small>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <label for="cartoonprice">Cartoon/Price</label>
+                                    <div class="input-group spinner{{ $errors->has('cartoonprice') ? ' has-error' : '' }}" data-trigger="spinner">
+                                        <div class="form-line">
+                                            <input name="cartoonprice" type="text" class="form-control text-center" value="{{ $product->cartoonprice ? $product->cartoonprice : old('cartoonprice') }}" data-rule="currency">
+                                        </div>
+                                        <span class="input-group-addon">
+                                            <a href="javascript:;" class="spin-up" data-spin="up"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                                            <a href="javascript:;" class="spin-down" data-spin="down"><i class="glyphicon glyphicon-chevron-down"></i></a>
+                                        </span>
+                                        @if ($errors->has('cartoonprice'))
+                                        <small class="alert alert-warning">
+                                            {{ $errors->first('cartoonprice') }}
+                                        </small>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="gift">Gift/Free</label>
+                                    <div class="form-group{{ $errors->has('gift') ? ' has-error' : '' }}">
+                                        <div class="form-line">
+                                            <input type="text" id="gift" class="form-control" name="gift" value="{{ $product->gift ? $product->gift : old('gift') }}">
+                                        </div>
+                                        @if ($errors->has('gift'))
+                                            <small class="alert alert-warning">
+                                                {{ $errors->first('gift') }}
+                                            </small>
+                                        @endif
+                                    </div>
+                                </div>
+
+                            </div>
                             
                             <div class="row clearfix">
                                 <div class="col-sm-4">

@@ -22,6 +22,12 @@
                                     <tr><td><b>{!! title_case('purchaseprice') !!}</b>:</td><td>{!! $product->purchaseprice !!}</td></tr>
                                     <tr><td><b>{!! title_case('bodyrate') !!}</b>:</td><td>{!! $product->bodyrate !!}</td></tr>
                                     <tr><td><b>{!! title_case('salesprice') !!}</b>:</td><td>{!! $product->salesprice !!}</td></tr>
+                                    <tr><td><b>{!! title_case('oldprice') !!}</b>:</td><td>{!! $product->oldprice !!}</td></tr>
+                                    <tr><td><b>{!! title_case('oldlabel') !!}</b>:</td><td>{!! $product->oldlabel !!}</td></tr>
+                                    <tr><td><b>{!! title_case('cartoonprice') !!}</b>:</td><td>{!! $product->cartoonprice !!}</td></tr>
+
+                                    <tr><td><b>{!! title_case('gift') !!}</b>:</td><td>{!! $product->gift !!}</td></tr>
+
                                     <tr><td><b>{!! title_case('discount') !!}</b>:</td><td>{!! $product->discount !!}</td></tr>
                                     <tr><td><b>{!! title_case('totalstock') !!}</b>:</td><td>{!! $product->totalstock !!}</td></tr>
                                     <tr><td><b>{!! title_case('availability') !!}</b>:</td><td>{!! $product->availability !!}</td></tr>

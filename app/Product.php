@@ -10,18 +10,23 @@ class Product extends Model
     [
 		'productname',
 		'productcode',
-		'image',
 		'productunit',
 		'description',
 		'purchaseprice',
 		'bodyrate',
 		'salesprice',
+		'oldprice',
+		'oldlabel',
+		'cartoonprice',
+		'gift',
 		'discount',
 		'totalstock',
 		'availability',
 		'category_id',
 		'user_id',
-		'supplier_id'
+		'supplier_id',
+		'suppliername',
+		'image'
     ];
 
 	public function category(){

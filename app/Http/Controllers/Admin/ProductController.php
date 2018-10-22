@@ -47,26 +47,30 @@ class ProductController extends Controller
             'productname'=>'required',
             'productcode'=>'required|unique:products',
             /*'productimage'=>'required',*/
-            'description'=>'required',
-            'purchaseprice'=>'required',
+            /*'description'=>'required',*/
+            /*'purchaseprice'=>'required',
             'bodyrate'=>'required',
-            'salesprice'=>'required',
-            'discount'=>'required',
-            'totalstock'=>'required',
-            'productunit'=>'required',
-            'availability'=>'required',
-            'supplier'=>'required'
+            'salesprice'=>'required',*/
+            /*'discount'=>'required',*/
+            /*'totalstock'=>'required',*/
+            /*'productunit'=>'required',*/
+            /*'availability'=>'required',*/
+            /*'supplier'=>'required'*/
           ]);
 
         $product = new Product();
-        $product->category_id = $request->get('category');
-        $product->productname = $request->get('productname'); 
-        $product->productcode = $request->get('productcode'); 
-        $product->productunit = $request->get('productunit'); 
-        $product->description = $request->get('description'); 
+        $product->category_id   = $request->get('category');
+        $product->productname   = $request->get('productname'); 
+        $product->productcode   = $request->get('productcode'); 
+        $product->productunit   = $request->get('productunit'); 
+        $product->description   = $request->get('description'); 
         $product->purchaseprice = $request->get('purchaseprice'); 
-        $product->bodyrate = $request->get('bodyrate'); 
-        $product->salesprice = $request->get('salesprice'); 
+        $product->bodyrate      = $request->get('bodyrate'); 
+        $product->salesprice    = $request->get('salesprice');
+        $product->oldprice      = $request->get('oldprice');
+        $product->oldlabel      = $request->get('oldlabel');
+        $product->cartoonprice  = $request->get('cartoonprice');
+        $product->gift          = $request->get('gift');
         $product->discount = $request->get('discount'); 
         $product->totalstock = $request->get('totalstock'); 
         $product->availability = $request->get('availability'); 
@@ -83,6 +87,15 @@ class ProductController extends Controller
         
         $product->user_id = Auth::id();
         $product->supplier_id = $request->get('supplier');
+
+        if($request->has('supplier')){
+            $supplier = Supplier::where('id', $request->get('supplier'))->first();
+            if($supplier){
+                $product->suppliername = $supplier->propitername;
+            }
+            
+        }
+        
         $product->save();
 
         return redirect(route('admin.productlist'))->with('product','New product created!');
@@ -99,40 +112,21 @@ class ProductController extends Controller
                             'id',
                             'productname',
                             'productcode',
-                            'image',
                             'productunit',
-                            'description',
                             'purchaseprice',
                             'bodyrate',
                             'salesprice',
-                            'discount',
                             'totalstock',
-                            'availability',
-                            'category_id',
-                            'user_id',
-                            'supplier_id'];
-
-        /*$product = DB::table('products')
-                ->join('suppliers', 'products.supplier_id', '=', 'suppliers.id')
-                ->join('categories', 'products.category_id', '=', 'categories.id')
-                ->select(['products.id','products.productname','products.productcode','products.image','products.productunit','products.description','products.purchaseprice','products.bodyrate','products.salesprice','products.discount','products.discount','products.totalstock','products.availability','products.category_id','products.user_id','products.supplier_id','categories.name','suppliers.propitername']);*/              
-
-        //$product = Product::select($productColumns);
-
-
-        /*return Datatables::of($product)
-              ->addColumn('action', function ($product) {
-                return '<small><a href="'.route('admin.viewproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-info font-6"><i class="material-icons font-6">search</i></a></small>'.'<small><a href="'.route('admin.editproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-info font-6"><i class="material-icons font-6">create</i></a></small>'.'<small><a onclick="return confirm(\'Are you sure want to delete?\')" href="'.route('admin.deleteproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-danger font-6"><i class="material-icons font-6">delete_sweep</i></a></small>';
-              })
-              ->editColumn('id', 'ID: {{$id}}')
-              ->removeColumn('id')
-              ->make(true);*/
+                            'suppliername',
+                            'created_at'
+                        ];
 
         $product = Product::select($productColumns);
 
+
         return Datatables::of($product)
               ->addColumn('action', function ($product) {
-                return '<small><a href="'.route('admin.viewproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-info font-6"><i class="material-icons font-6">search</i></a></small>'.'<small><a href="'.route('admin.editproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-info font-6"><i class="material-icons font-6">create</i></a></small>'.'<small><a onclick="return confirm(\'Are you sure want to delete?\')" href="'.route('admin.deleteproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-danger font-6"><i class="material-icons font-6">delete_sweep</i></a></small>';
+                return '<small><a href="'.route('admin.viewproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-info"><i class="material-icons">search</i></a></small>'.'<small><a href="'.route('admin.editproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-info"><i class="material-icons">create</i></a></small>'.'<small><a onclick="return confirm(\'Are you sure want to delete?\')" href="'.route('admin.deleteproduct', ['id'=> $product->id]).'" class="btn btn-sm btn-danger"><i class="material-icons">delete_sweep</i></a></small>';
               })
               ->editColumn('id', 'ID: {{$id}}')
               ->removeColumn('id')
@@ -206,16 +200,20 @@ class ProductController extends Controller
             return redirect(route('admin.productlist'))->with('product','Product not found!');
         }
 
-        $product->category_id = $request->get('category');
-        $product->productname = $request->get('productname'); 
-        $product->productunit = $request->get('productunit'); 
-        $product->description = $request->get('description'); 
+        $product->category_id   = $request->get('category');
+        $product->productname   = $request->get('productname'); 
+        $product->productunit   = $request->get('productunit'); 
+        $product->description   = $request->get('description'); 
         $product->purchaseprice = $request->get('purchaseprice'); 
-        $product->bodyrate = $request->get('bodyrate'); 
-        $product->salesprice = $request->get('salesprice'); 
-        $product->discount = $request->get('discount'); 
-        $product->totalstock = $request->get('totalstock'); 
-        $product->availability = $request->get('availability'); 
+        $product->bodyrate      = $request->get('bodyrate'); 
+        $product->salesprice    = $request->get('salesprice');
+        $product->oldprice      = $request->get('oldprice');
+        $product->oldlabel      = $request->get('oldlabel');
+        $product->cartoonprice  = $request->get('cartoonprice');
+        $product->gift          = $request->get('gift'); 
+        $product->discount      = $request->get('discount'); 
+        $product->totalstock    = $request->get('totalstock'); 
+        $product->availability  = $request->get('availability'); 
 
         if($request->has('productimage')){
             $image = $request->file('productimage');
@@ -232,6 +230,13 @@ class ProductController extends Controller
         
         $product->user_id = Auth::id();
         $product->supplier_id = $request->get('supplier');
+
+        if($request->has('supplier')){
+            $supplier = Supplier::where('id', $request->get('supplier'))->first();
+            if($supplier){
+                $product->suppliername = $supplier->propitername;
+            }
+        }
         $product->update();
 
         return redirect(route('admin.productlist'))->with('product','New product updated!');
@@ -269,18 +274,13 @@ class ProductController extends Controller
                             'id',
                             'productname',
                             'productcode',
-                            'image',
                             'productunit',
-                            'description',
                             'purchaseprice',
                             'bodyrate',
                             'salesprice',
-                            'discount',
                             'totalstock',
-                            'availability',
-                            'category_id',
-                            'user_id',
-                            'supplier_id'];
+                            'suppliername',
+                            'created_at'];
 
 
         $product = Product::where('category_id', $categoryId)->select($productColumns);

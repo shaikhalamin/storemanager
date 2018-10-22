@@ -19,10 +19,12 @@ class CreateCustomersTable extends Migration
             $table->string('mobile')->unique();
             $table->string('telephone')->nullable();
             $table->string('email')->unique()->nullable();
-            $table->string('city');
+            $table->double('due', 8, 2)->nullable();
+            $table->double('deposit', 8, 2)->nullable();
+            $table->string('city')->nullable();
             $table->string('zipcode')->nullable();
-            $table->text('address');
-            $table->string('country');
+            $table->text('address')->nullable();
+            $table->string('country')->nullable();
             $table->string('image')->default('default.jpg');
             $table->timestamps();
         });
