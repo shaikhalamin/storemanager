@@ -92,10 +92,10 @@
         });
     });
 
-    var hasNotification = "{{Session::has('supplier')}}";
+    var hasNotification = "{{Session::has('product')}}";
     if(hasNotification){
 
-        var getNotification = "{{Session::get('supplier')}}";
+        var getNotification = "{{Session::get('product')}}";
 
         $.notify({
             // options

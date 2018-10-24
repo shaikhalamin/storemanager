@@ -239,7 +239,7 @@ class ProductController extends Controller
         }
         $product->update();
 
-        return redirect(route('admin.productlist'))->with('product','New product updated!');
+        return redirect(route('admin.productlist'))->with('product','Product updated!');
 
     }
     public function deleteproduct($id){
