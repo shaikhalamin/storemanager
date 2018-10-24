@@ -222,7 +222,7 @@ class ProductController extends Controller
             $product->image = $imageName;
 
             $upload = new Common();
-            $imageUpload = $upload->uproductsateImage($productcode,$image,'/images/product/');
+            $imageUpload = $upload->updateImage($productcode,$image,'/images/product/');
 
         }else{
             $product->image = $product->image;
